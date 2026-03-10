@@ -1,0 +1,505 @@
+/* ===================================
+   PharmaCore - Unique Extra Features
+   unique.css
+   =================================== */
+
+/* ==============================
+   1. NEWS / ANNOUNCEMENT TICKER
+   ============================== */
+.news-ticker-wrap {
+    background: linear-gradient(90deg, #06b6d4, #1b4fa8);
+    color: #fff;
+    padding: 0;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1080;
+    /* above header */
+    height: 36px;
+    display: flex;
+    align-items: center;
+}
+
+.news-ticker-label {
+    background: #f59e0b;
+    color: #0f172a;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+    gap: 6px;
+}
+
+.ticker-track {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+    flex: 1;
+}
+
+.ticker-content {
+    white-space: nowrap;
+    animation: tickerScroll 35s linear infinite;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.ticker-content span {
+    padding: 0 40px;
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.ticker-content span:last-child {
+    border-right: none;
+}
+
+@keyframes tickerScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.ticker-pause-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+
+.ticker-pause-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.ticker-content.paused {
+    animation-play-state: paused;
+}
+
+/* ==============================
+   2. DARK MODE TOGGLE
+   ============================== */
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 140px;
+    right: 24px;
+    z-index: 999;
+    width: 48px;
+    height: 48px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(27, 79, 168, 0.4);
+    border: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.1rem;
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.12) rotate(15deg);
+    box-shadow: 0 6px 24px rgba(27, 79, 168, 0.55);
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    --bg-white: #0f172a;
+    --bg-light: #1e293b;
+    --text-dark: #f1f5f9;
+    --text-body: #cbd5e1;
+    --text-light: #94a3b8;
+    --border: #334155;
+}
+
+body.dark-mode .main-header {
+    background: rgba(15, 23, 42, 0.98);
+}
+
+body.dark-mode .service-card,
+body.dark-mode .product-card,
+body.dark-mode .testimonial-card,
+body.dark-mode .prod-card,
+body.dark-mode .team-card,
+body.dark-mode .pipeline-item,
+body.dark-mode .sf-card,
+body.dark-mode .contact-form {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.dark-mode .feature-item,
+body.dark-mode .contact-info-block,
+body.dark-mode .mv-card.vision,
+body.dark-mode .pipeline-phase {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.dark-mode .main-nav {
+    background: #0f172a;
+}
+
+body.dark-mode .main-nav a {
+    color: #cbd5e1;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f1f5f9;
+}
+
+body.dark-mode .about-badge-float {
+    background: #1e293b;
+}
+
+body.dark-mode .section-badge {
+    background: #1e293b;
+}
+
+body.dark-mode .filter-btn {
+    background: #1e293b;
+    color: #94a3b8;
+    border-color: #334155;
+}
+
+body.dark-mode .logo-tagline {
+    color: #64748b;
+}
+
+body.dark-mode .page-banner::after {
+    background: #0f172a;
+}
+
+body.dark-mode .footer-newsletter {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+body.dark-mode .top-bar {
+    background: #0a1628 !important;
+    border-bottom: 1px solid #1e293b;
+}
+
+body.dark-mode .news-ticker-wrap {
+    background: linear-gradient(90deg, #0a1628, #1b4fa8);
+}
+
+/* ==============================
+   3. FLOATING ACTION BUTTONS
+   ============================== */
+
+/* Back to Top */
+.back-to-top {
+    position: fixed;
+    bottom: 80px;
+    right: 24px;
+    z-index: 999;
+    width: 48px;
+    height: 48px;
+    background: var(--gradient-primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 16px rgba(27, 79, 168, 0.45);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.1rem;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(27, 79, 168, 0.55);
+}
+
+/* WhatsApp Float */
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+    width: 52px;
+    height: 52px;
+    background: #25d366;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.5);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.12) rotate(-5deg);
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.65);
+    color: #fff;
+}
+
+/* Pulse ring */
+.whatsapp-float::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #25d366;
+    animation: waRing 2s ease-out infinite;
+}
+
+@keyframes waRing {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+/* Tooltip on WhatsApp */
+.whatsapp-float .wa-tooltip {
+    position: absolute;
+    right: 62px;
+    background: #0f172a;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.25s ease;
+}
+
+.whatsapp-float:hover .wa-tooltip {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ==============================
+   4. PAGE LOADING PROGRESS BAR
+   ============================== */
+#page-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #06b6d4, #1b4fa8, #f59e0b);
+    z-index: 9999;
+    transition: width 0.1s linear;
+    border-radius: 0 3px 3px 0;
+}
+
+/* ==============================
+   5. ANIMATED SECTION ENTRY
+      (enhanced over animations.css)
+   ============================== */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-up:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.reveal-up:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.reveal-up:nth-child(4) {
+    transition-delay: 0.3s;
+}
+
+.reveal-up:nth-child(5) {
+    transition-delay: 0.4s;
+}
+
+.reveal-up:nth-child(6) {
+    transition-delay: 0.5s;
+}
+
+/* ==============================
+   6. COOKIE CONSENT BANNER
+   ============================== */
+.cookie-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #0a1628;
+    color: rgba(255, 255, 255, 0.88);
+    padding: 18px 24px;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.25);
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-top: 2px solid var(--secondary);
+}
+
+.cookie-bar.show {
+    transform: translateY(0);
+}
+
+.cookie-bar p {
+    font-size: 0.85rem;
+    line-height: 1.55;
+    flex: 1;
+    min-width: 220px;
+}
+
+.cookie-bar a {
+    color: #06b6d4;
+    text-decoration: underline;
+}
+
+.cookie-bar-btns {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.cookie-accept {
+    background: var(--secondary);
+    color: #fff;
+    border: none;
+    padding: 9px 20px;
+    border-radius: 8px;
+    font-size: 0.83rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cookie-accept:hover {
+    background: var(--primary);
+}
+
+.cookie-decline {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 0.83rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cookie-decline:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .news-ticker-wrap {
+        height: 30px;
+    }
+
+    .news-ticker-label {
+        font-size: 0.6rem;
+        padding: 0 10px;
+    }
+
+    .ticker-content {
+        font-size: 0.7rem;
+    }
+
+    .back-to-top {
+        bottom: 84px;
+        right: 16px;
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+    }
+
+    .whatsapp-float {
+        bottom: 20px;
+        right: 16px;
+        width: 46px;
+        height: 46px;
+        font-size: 1.3rem;
+    }
+
+    .dark-mode-toggle {
+        bottom: 136px;
+        right: 16px;
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+    }
+
+    .cookie-bar {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .cookie-bar-btns {
+        width: 100%;
+    }
+
+    .cookie-accept,
+    .cookie-decline {
+        flex: 1;
+        text-align: center;
+    }
+
+    .wa-tooltip {
+        display: none;
+    }
+}

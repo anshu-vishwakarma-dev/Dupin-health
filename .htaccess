@@ -1,0 +1,4 @@
+ErrorDocument 404 /pharma-website/404.php
+
+# Basic Security & SEO redirects can be added here if needed
+Options -Indexes
