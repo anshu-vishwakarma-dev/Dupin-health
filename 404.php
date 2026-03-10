@@ -12,8 +12,8 @@
     
     <style>
         :root {
-            --bg-color: #cadae3;
-            --pharma-blue: #006eb1;
+            --bg-color: #cbdce4;
+            --pharma-blue: #007cc3;
             --text-white: #ffffff;
             --doc-blue: #00a9e0;
             --mask-blue: #e0f2f7;
@@ -49,7 +49,7 @@
             position: absolute;
             background: #fff;
             border-radius: 100px;
-            opacity: 0.85;
+            opacity: 0.9;
         }
         .cloud::before, .cloud::after {
             content: '';
@@ -58,66 +58,66 @@
             border-radius: 50%;
         }
 
-        .c1 { width: 200px; height: 55px; top: 15%; left: 10%; }
-        .c1::before { width: 90px; height: 90px; top: -45px; left: 30px; }
-        .c1::after { width: 70px; height: 70px; top: -30px; left: 100px; }
+        .c1 { width: 180px; height: 50px; top: 15%; left: 10%; opacity: 0.8; }
+        .c1::before { width: 80px; height: 80px; top: -40px; left: 25px; }
+        .c1::after { width: 60px; height: 60px; top: -30px; left: 90px; }
 
-        .c2 { width: 140px; height: 40px; top: 45%; left: 45%; opacity: 0.6; }
-        .c2::before { width: 65px; height: 65px; top: -30px; left: 20px; }
-        .c2::after { width: 50px; height: 50px; top: -20px; left: 65px; }
+        .c2 { width: 220px; height: 60px; top: 45%; left: 45%; opacity: 0.7; }
+        .c2::before { width: 100px; height: 100px; top: -50px; left: 30px; }
+        .c2::after { width: 80px; height: 80px; top: -30px; left: 100px; }
 
-        .c3 { width: 160px; height: 50px; top: 12%; right: 25%; }
-        .c3::before { width: 80px; height: 80px; top: -40px; left: 25px; }
-        .c3::after { width: 60px; height: 60px; top: -30px; left: 80px; }
+        .c3 { width: 140px; height: 40px; top: 10%; right: 20%; opacity: 0.8; }
+        .c3::before { width: 60px; height: 60px; top: -30px; left: 20px; }
+        .c3::after { width: 50px; height: 50px; top: -20px; left: 60px; }
 
-        /* Main Content wrapper */
-        .main-content {
+        .main-wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 20px;
-            width: 100%;
-            max-width: 1200px;
-            padding: 20px;
-            position: relative;
             z-index: 10;
+            width: 100%;
+            max-width: 1100px;
+            padding: 20px;
         }
 
         /* Left Side: Text */
-        .text-box {
+        .text-side {
             text-align: center;
             flex: 1;
         }
 
-        .oops {
+        .oops-text {
             color: var(--text-white);
             font-size: 5rem;
             font-weight: 800;
             margin-bottom: -15px;
             letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
         }
 
         .error-num {
             color: var(--pharma-blue);
-            font-size: 20rem;
+            font-size: 10rem;
             font-weight: 900;
             line-height: 0.85;
             letter-spacing: -10px;
             margin-bottom: 5px;
             display: inline-block;
+            filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.02));
         }
 
-        .pnf {
+        .pnf-text {
             color: var(--text-white);
             font-size: 2.2rem;
             font-weight: 900;
-            letter-spacing: 5px;
+            letter-spacing: 6px;
             text-transform: uppercase;
         }
 
-        .home-btn {
+        .back-btn {
             display: inline-block;
-            margin-top: 50px;
+            margin-top: 45px;
             padding: 16px 45px;
             background: var(--pharma-blue);
             color: #fff;
@@ -126,18 +126,18 @@
             border-radius: 50px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            transition: all 0.3s;
-            box-shadow: 0 10px 20px rgba(0, 110, 177, 0.3);
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 124, 195, 0.25);
         }
-        .home-btn:hover {
+        .back-btn:hover {
             transform: translateY(-4px);
-            box-shadow: 0 15px 30px rgba(0, 110, 177, 0.4);
+            box-shadow: 0 15px 30px rgba(0, 124, 195, 0.35);
         }
 
-        /* Right Side: Doctor Illustration Section */
-        .doc-section {
-            flex: 0 0 350px;
-            height: 600px;
+        /* Right Side: Doctor Illustration using SVG */
+        .doc-canvas {
+            flex: 0 0 320px;
+            height: 550px;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -146,129 +146,137 @@
         }
 
         .doctor-svg {
-            width: 250px;
+            width: 280px;
             height: auto;
             position: relative;
             z-index: 5;
         }
 
-        /* The sparkle/thinking lines */
-        .sparkles {
+        .sparklines {
             position: absolute;
-            top: 40px;
+            top: 20px;
             right: 40px;
             z-index: 10;
         }
 
-        /* Disconnected cable logic */
         .cable-svg {
             position: absolute;
-            bottom: 235px;
-            right: 170px;
-            width: 350px;
-            height: 120px;
+            bottom: 220px;
+            right: 180px;
+            width: 400px;
+            height: 150px;
             z-index: 6;
             pointer-events: none;
         }
 
-        .shadow {
+        .shadow-oval {
             position: absolute;
-            bottom: 30px;
+            bottom: 20px;
             width: 140px;
             height: 15px;
-            background: rgba(0,0,0,0.1);
+            background: rgba(0,0,0,0.08);
             border-radius: 50%;
             z-index: 2;
         }
 
-        @media (max-width: 950px) {
-            body { overflow-y: auto; height: auto; padding: 60px 20px; }
-            .main-content { flex-direction: column; }
-            .error-num { font-size: 14rem; }
-            .pnf { font-size: 1.8rem; }
-            .doc-section { height: 550px; }
+        @media (max-width: 900px) {
+            .main-wrapper { flex-direction: column; height: auto; padding: 60px 20px; }
+            .error-num { font-size: 13rem; }
+            .oops-text { font-size: 3.5rem; }
+            .pnf-text { font-size: 1.8rem; }
+            .doc-canvas { margin-top: 50px; }
+            .cable-svg { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Background Clouds -->
+    <!-- Decorative Atmosphere -->
     <div class="cloud-wrap">
         <div class="cloud c1"></div>
         <div class="cloud c2"></div>
         <div class="cloud c3"></div>
     </div>
 
-    <div class="main-content">
-        <!-- Text Section -->
-        <div class="text-box">
-            <h2 class="oops">Oops!</h2>
+    <div class="main-wrapper">
+        <!-- Text Content -->
+        <div class="text-side">
+            <h2 class="oops-text">Oops!</h2>
             <div class="error-num">404</div>
-            <h1 class="pnf">Page Not Found</h1>
+            <h1 class="pnf-text">Page Not Found</h1>
             <br>
-            <a href="index.php" class="home-btn">Go To Safety</a>
+            <a href="index.php" class="back-btn">Go Back Home</a>
         </div>
 
-        <!-- Illustration Section -->
-        <div class="doc-section">
-            <!-- Sparkles above head -->
-            <svg class="sparkles" width="70" height="50" viewBox="0 0 70 50">
-                <line x1="10" y1="35" x2="25" y2="15" stroke="white" stroke-width="4" stroke-linecap="round" />
-                <line x1="35" y1="30" x2="35" y2="5" stroke="white" stroke-width="4" stroke-linecap="round" />
-                <line x1="60" y1="35" x2="45" y2="15" stroke="white" stroke-width="4" stroke-linecap="round" />
+        <!-- Illustration Content -->
+        <div class="doc-canvas">
+            <!-- Surprised/Confused Sparkles -->
+            <svg class="sparklines" width="80" height="60" viewBox="0 0 80 60">
+                <line x1="15" y1="45" x2="30" y2="25" stroke="white" stroke-width="4" stroke-linecap="round" />
+                <line x1="40" y1="40" x2="40" y2="15" stroke="white" stroke-width="4" stroke-linecap="round" />
+                <line x1="65" y1="45" x2="50" y2="25" stroke="white" stroke-width="4" stroke-linecap="round" />
             </svg>
 
-            <!-- Detailed Doctor SVG -->
+            <!-- Refined SVG Illustration -->
             <svg class="doctor-svg" viewBox="0 0 400 850" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Shoes -->
-                <rect x="145" y="780" width="55" height="30" rx="15" fill="#4B3621"/>
-                <rect x="210" y="780" width="55" height="30" rx="15" fill="#4B3621"/>
-                <!-- Pants -->
-                <path d="M150 500 L250 500 L260 780 L200 780 L200 650 L140 780 L140 500 Z" fill="#333333"/>
+                <!-- Gradients for better look -->
+                <defs>
+                    <linearGradient id="coat-grad" x1="200" y1="200" x2="200" y2="600" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="white"/>
+                        <stop offset="1" stop-color="#f8f9fa"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Pants & Shoes - Perfected Symmetry -->
+                <path d="M150 500 L250 500 L260 780 L200 780 L200 600 L140 780 L140 500 Z" fill="#333333"/>
+                <!-- Left Shoe -->
+                <rect x="135" y="780" width="55" height="30" rx="15" fill="#4b3621"/>
+                <!-- Right Shoe -->
+                <rect x="210" y="780" width="55" height="30" rx="15" fill="#4b3621"/>
+                <path d="M190 780 L210 780" stroke="#333333" stroke-width="2"/> <!-- Gap filler -->
                 
-                <!-- White Lab Coat -->
-                <path d="M120 200 C120 200 280 200 280 200 L320 600 L80 600 Z" fill="white"/>
+                <!-- Lab Coat -->
+                <path d="M120 180 C120 180 280 180 280 180 L320 600 L80 600 Z" fill="url(#coat-grad)"/>
+                
                 <!-- Inner Blue Shirt -->
-                <path d="M170 200 L230 200 L215 600 L185 600 Z" fill="#00A9E0"/>
+                <path d="M170 180 L230 180 L215 500 L185 500 Z" fill="#00A9E0"/>
                 
-                <!-- Arms -->
-                <path d="M100 250 C85 350 140 460 200 440" stroke="white" stroke-width="45" stroke-linecap="round"/>
-                <path d="M300 250 C315 350 260 460 190 440" stroke="white" stroke-width="45" stroke-linecap="round"/>
+                <!-- Arms/Sleeves -->
+                <path d="M100 240 C80 340 130 450 190 430" stroke="white" stroke-width="45" stroke-linecap="round"/>
+                <path d="M300 240 C320 340 270 450 210 430" stroke="white" stroke-width="45" stroke-linecap="round"/>
 
-                <!-- Hands -->
-                <circle cx="210" cy="440" r="22" fill="#FFDBAC"/>
-                <circle cx="185" cy="440" r="22" fill="#FFDBAC"/>
+                <!-- Better Hands holding the plug -->
+                <path d="M175 435 C175 420 225 420 225 435 L225 450 C225 465 175 465 175 450 Z" fill="#FFDBAC"/>
 
-                <!-- Face/Head -->
-                <rect x="160" y="70" width="80" height="110" rx="40" fill="#FFDBAC"/>
-                <!-- Hair -->
-                <path d="M155 110 C155 40 245 40 245 110 L245 120 L155 120 Z" fill="#4A342B"/>
+                <!-- Face/Head Details -->
+                <rect x="160" y="60" width="80" height="110" rx="40" fill="#FFDBAC"/>
+                <!-- Hair with Depth -->
+                <path d="M155 100 C155 30 245 30 245 100 L245 115 L155 115 Z" fill="#4A342B"/>
+                <path d="M155 100 C170 70 210 70 245 100" stroke="#3d2b24" stroke-width="2" fill="none"/>
+                
                 <!-- Glasses -->
-                <circle cx="182" cy="130" r="14" stroke="#333333" stroke-width="3"/>
-                <circle cx="218" cy="130" r="14" stroke="#333333" stroke-width="3"/>
-                <line x1="196" y1="130" x2="204" y2="130" stroke="#333333" stroke-width="3"/>
+                <circle cx="180" cy="120" r="14" stroke="#333333" stroke-width="3"/>
+                <circle cx="220" cy="120" r="14" stroke="#333333" stroke-width="3"/>
+                <line x1="194" y1="120" x2="206" y2="120" stroke="#333333" stroke-width="3"/>
                 
-                <!-- Surgical Mask (Missing piece added) -->
-                <rect x="170" y="150" width="60" height="30" rx="5" fill="#E0F2F7"/>
-                <line x1="170" y1="160" x2="160" y2="155" stroke="white" stroke-width="2"/>
-                <line x1="170" y1="170" x2="160" y2="175" stroke="white" stroke-width="2"/>
-                <line x1="230" y1="160" x2="240" y2="155" stroke="white" stroke-width="2"/>
-                <line x1="230" y1="170" x2="240" y2="175" stroke="white" stroke-width="2"/>
+                <!-- Mask -->
+                <rect x="170" y="145" width="60" height="30" rx="6" fill="#E0F2F7"/>
+                <rect x="173" y="152" width="54" height="2" fill="#d1e9f0"/>
+                <rect x="173" y="159" width="54" height="2" fill="#d1e9f0"/>
             </svg>
 
-            <!-- Disconnected Cable with Plug -->
+            <!-- High Quality Cable and Plug -->
             <svg class="cable-svg" preserveAspectRatio="none">
-                <!-- Blue cable curved towards hands -->
-                <path d="M 320,105 C 180,180 150,-10 40,85" stroke="#006EB1" stroke-width="10" fill="transparent" stroke-linecap="round"/>
-                <!-- Plug Head held in hands position -->
-                <rect x="305" y="85" width="55" height="35" rx="10" fill="#006EB1" transform="rotate(15, 332, 102)"/>
-                <!-- Plug Prongs -->
-                <rect x="355" y="93" width="18" height="5" rx="2" fill="#BCC6CC" transform="rotate(15, 332, 102)"/>
-                <rect x="355" y="107" width="18" height="5" rx="2" fill="#BCC6CC" transform="rotate(15, 332, 102)"/>
+                <path d="M 350,110 C 200,200 150,-20 40,85" stroke="#007CC3" stroke-width="12" fill="transparent" stroke-linecap="round"/>
+                <!-- Plug being held -->
+                <g transform="translate(325, 95) rotate(18)">
+                    <rect x="0" y="0" width="60" height="36" rx="10" fill="#007CC3"/>
+                    <rect x="58" y="8" width="20" height="6" rx="3" fill="#BCC6CC"/>
+                    <rect x="58" y="22" width="20" height="6" rx="3" fill="#BCC6CC"/>
+                </g>
             </svg>
 
-            <!-- Standing Shadow -->
-            <div class="shadow"></div>
+            <div class="shadow-oval"></div>
         </div>
     </div>
 
