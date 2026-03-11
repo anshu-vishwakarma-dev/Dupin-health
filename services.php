@@ -26,8 +26,8 @@ include 'includes/header.php';
     <div class="container">
         <div class="section-header anim-fadeInUp">
             <span class="section-badge">What We Offer</span>
-            <h2 class="section-title">Superior <span>Pharmaceutical Services</span></h2>
-            <p class="section-subtitle">At Dupin Health Care Private Limited, we specialize in high-quality contract manufacturing and professional distribution networks across India.</p>
+            <h2 class="section-title">Trusted <span>Pharmaceutical Services</span></h2>
+            <p class="section-subtitle">At Dupin Health Care Private Limited, we specialize in high-quality third-party pharmaceutical manufacturing and PCD Pharma Franchise services across India.</p>
             <div class="divider"></div>
         </div>
 
@@ -142,7 +142,7 @@ include 'includes/header.php';
         </div>
 
         <!-- Business FAQs / Model Confirmation -->
-        <div style="margin-top:120px; padding: 60px; background: var(--bg-light); border-radius: var(--radius-xl);">
+        <div style="margin-top:80px; padding: 30px; background: var(--bg-light); border-radius: var(--radius-xl);">
             <div class="section-header anim-fadeInUp" style="text-align:left;">
                 <span class="section-badge">Business Q&A</span>
                 <h2 class="section-title">Common <span>Queries</span></h2>

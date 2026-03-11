@@ -4,6 +4,7 @@ $products = [
     [
         'id' => 'duplicit-d3',
         'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?vitamin,supplement,tablet&sig=101',
         'category' => 'tablets',
         'name' => 'DUPICIT D3',
         'composition' => 'Cholecalciferol 60,000 IU',
@@ -17,6 +18,7 @@ $products = [
     [
         'id' => 'biladup-m',
         'icon' => 'fas fa-tablets',
+        'image' => 'https://source.unsplash.com/400x300/?allergy,medicine,pharmacy&sig=102',
         'category' => 'tablets',
         'name' => 'BILADUP M',
         'composition' => 'Bilastine 20mg + Montelukast 10mg',
@@ -28,6 +30,7 @@ $products = [
     [
         'id' => 'dupinac-sp',
         'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?painkiller,inflammation,pills&sig=103',
         'category' => 'tablets',
         'name' => 'DUPINAC SP',
         'composition' => 'Aceclofenac 100mg + Paracetamol 325mg + Serratiopeptidase 15mg',
@@ -39,6 +42,7 @@ $products = [
     [
         'id' => 'defocure-6',
         'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?steroid,immune,medication&sig=104',
         'category' => 'tablets',
         'name' => 'DEFOCURE 6',
         'composition' => 'Deflazacort 6mg',
@@ -50,6 +54,7 @@ $products = [
     [
         'id' => 'defoset-md',
         'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?asthma,inhaler,breathing&sig=105',
         'category' => 'tablets',
         'name' => 'DEFOSET 5/10 MD',
         'composition' => 'Deflazacort 5/10mg (Mouth Dissolving)',
@@ -61,6 +66,7 @@ $products = [
     [
         'id' => 'pentixol',
         'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?anxiety,mental,health,brain&sig=106',
         'category' => 'tablets',
         'name' => 'PENTIXOL',
         'composition' => 'Flupentixol 0.5mg + Melitracen 10mg',
@@ -72,6 +78,7 @@ $products = [
     [
         'id' => 'mitazipin-15',
         'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?depression,therapy,calm&sig=107',
         'category' => 'tablets',
         'name' => 'MITAZIPIN 15',
         'composition' => 'Mirtazapine 15mg',
@@ -83,6 +90,7 @@ $products = [
     [
         'id' => 'amaster',
         'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?neuropathy,nerve,pain,relief&sig=108',
         'category' => 'tablets',
         'name' => 'AMASTER 10/25',
         'composition' => 'Amitriptyline 10/25mg',
@@ -94,6 +102,7 @@ $products = [
     [
         'id' => 'cifinor-cv',
         'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?antibiotic,bacteria,infection&sig=109',
         'category' => 'tablets',
         'name' => 'CIFINOR CV 325',
         'composition' => 'Cefixime 200mg + Clavulanic Acid 125mg',
@@ -105,6 +114,7 @@ $products = [
     [
         'id' => 'pain-zep-nm',
         'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?acute,pain,analgesic&sig=110',
         'category' => 'tablets',
         'name' => 'PAIN-ZEP NM',
         'composition' => 'Nimesulide 100mg + Paracetamol 325mg',
@@ -116,6 +126,7 @@ $products = [
     [
         'id' => 'naproheal-d',
         'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?migraine,headache,medicine&sig=111',
         'category' => 'tablets',
         'name' => 'NAPROHEAL D 250/500',
         'composition' => 'Naproxen 250/500mg + Domperidone 10mg',
@@ -127,6 +138,7 @@ $products = [
     [
         'id' => 'trumox-625',
         'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?respiratory,lung,infection,tablet&sig=112',
         'category' => 'tablets',
         'name' => 'TRUMOX 625',
         'composition' => 'Amoxycillin 500mg + Clavulanic Acid 125mg',
@@ -138,6 +150,7 @@ $products = [
     [
         'id' => 'sezogard',
         'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?azithromycin,antibiotics,blister&sig=113',
         'category' => 'tablets',
         'name' => 'SEZOGARD 250/500',
         'composition' => 'Azithromycin 250/500mg',
@@ -149,6 +162,7 @@ $products = [
     [
         'id' => 'roxotin-90',
         'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?arthritis,joint,pain,orthopedic&sig=114',
         'category' => 'tablets',
         'name' => 'ROXOTIN 90',
         'composition' => 'Etoricoxib 90mg',
@@ -160,6 +174,7 @@ $products = [
     [
         'id' => 'sertom',
         'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?ocd,panic,ssri,antidepressant&sig=115',
         'category' => 'tablets',
         'name' => 'SERTOM 25/50/100',
         'composition' => 'Sertraline 25/50/100mg',
@@ -171,6 +186,7 @@ $products = [
     [
         'id' => 'valconi',
         'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?epilepsy,neurology,bipolar&sig=116',
         'category' => 'tablets',
         'name' => 'VALCONI 200/300/500',
         'composition' => 'Sodium Valproate 200/300/500mg',
@@ -184,6 +200,7 @@ $products = [
     [
         'id' => 'dupinex-dsr',
         'icon' => 'fas fa-capsules',
+        'image' => 'https://source.unsplash.com/400x300/?stomach,acid,gastric,capsule&sig=117',
         'category' => 'capsules',
         'name' => 'DUPINEX DSR',
         'composition' => 'Rabeprazole 20mg + Domperidone 30mg (SR)',
@@ -195,6 +212,7 @@ $products = [
     [
         'id' => 'dupivion',
         'icon' => 'fas fa-capsules',
+        'image' => 'https://source.unsplash.com/400x300/?diabetes,glucose,blood,sugar&sig=118',
         'category' => 'capsules',
         'name' => 'DUPIVION',
         'composition' => 'Voglibose 0.2/0.3mg',
@@ -206,6 +224,7 @@ $products = [
     [
         'id' => 'carti-strong',
         'icon' => 'fas fa-capsules',
+        'image' => 'https://source.unsplash.com/400x300/?bone,joint,glucosamine,supplement&sig=119',
         'category' => 'capsules',
         'name' => 'CARTI STRONG',
         'composition' => 'Glucosamine + Chondroitin + Methylsulfonylmethane',
@@ -217,6 +236,7 @@ $products = [
     [
         'id' => 'citicolar-p',
         'icon' => 'fas fa-capsules',
+        'image' => 'https://source.unsplash.com/400x300/?brain,cognitive,nootropic,memory&sig=120',
         'category' => 'capsules',
         'name' => 'CITICOLAR P',
         'composition' => 'Citicoline 500mg + Piracetam 800mg',
@@ -228,6 +248,7 @@ $products = [
     [
         'id' => 'itinox-plus',
         'icon' => 'fas fa-capsules',
+        'image' => 'https://source.unsplash.com/400x300/?fungal,skin,antifungal,capsule&sig=121',
         'category' => 'capsules',
         'name' => 'ITINOX+',
         'composition' => 'Itraconazole 100/200mg',
@@ -239,6 +260,7 @@ $products = [
     [
         'id' => 'g1-nerve-plus',
         'icon' => 'fas fa-capsules',
+        'image' => 'https://source.unsplash.com/400x300/?nerve,neuropathy,vitamin,b12&sig=122',
         'category' => 'capsules',
         'name' => 'G1- NERVE +',
         'composition' => 'Methylcobalamin + Alpha Lipoic Acid + Pregabalin',
@@ -250,6 +272,7 @@ $products = [
     [
         'id' => 'imicare',
         'icon' => 'fas fa-capsules',
+        'image' => 'https://source.unsplash.com/400x300/?immunity,immune,boost,health&sig=123',
         'category' => 'capsules',
         'name' => 'IMICARE',
         'composition' => 'Immuno-supporting nutrients',
@@ -263,6 +286,7 @@ $products = [
     [
         'id' => 'femicap',
         'icon' => 'fas fa-droplet',
+        'image' => 'https://source.unsplash.com/400x300/?women,health,hormone,multivitamin&sig=124',
         'category' => 'softgels',
         'name' => 'FEMICAP SOFTGELS',
         'composition' => 'Multivitamin, Multimineral with Evening Primrose Oil',
@@ -274,6 +298,7 @@ $products = [
     [
         'id' => 'dailytab-q10',
         'icon' => 'fas fa-droplet',
+        'image' => 'https://source.unsplash.com/400x300/?heart,cardiac,omega,coenzyme&sig=125',
         'category' => 'softgels',
         'name' => 'DAILYTAB Q-10',
         'composition' => 'Coenzyme Q10 + Omega 3 Fatty Acids',
@@ -287,6 +312,7 @@ $products = [
     [
         'id' => 'comfort-syrup',
         'icon' => 'fas fa-prescription-bottle',
+        'image' => 'https://source.unsplash.com/400x300/?cough,syrup,herbal,throat&sig=126',
         'category' => 'syrups',
         'name' => 'COMFORT SYRUP',
         'composition' => 'Soothing Ayurvedic/Herbal blend',
@@ -298,6 +324,7 @@ $products = [
     [
         'id' => 'dupimist-ft',
         'icon' => 'fas fa-spray-can',
+        'image' => 'https://source.unsplash.com/400x300/?nasal,spray,nose,rhinitis&sig=127',
         'category' => 'others',
         'name' => 'DUPIMIST FT',
         'composition' => 'Fluticasone Furoate Nasal Spray',
@@ -309,6 +336,7 @@ $products = [
     [
         'id' => 'fixip-nasal',
         'icon' => 'fas fa-spray-can',
+        'image' => 'https://source.unsplash.com/400x300/?congestion,cold,blocked,nose&sig=128',
         'category' => 'others',
         'name' => 'FIXIP NASAL SPRAY',
         'composition' => 'Xylometazoline Hydrochloride',
@@ -320,6 +348,7 @@ $products = [
     [
         'id' => 'fg-cide-cream',
         'icon' => 'fas fa-tint',
+        'image' => 'https://source.unsplash.com/400x300/?antifungal,cream,skin,ringworm&sig=129',
         'category' => 'others',
         'name' => 'FG CIDE CREAM',
         'composition' => 'Luliconazole 1.0% w/w',

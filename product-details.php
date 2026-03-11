@@ -61,7 +61,7 @@ include 'includes/header.php';
             <span>›</span>
             <a href="products.php">Products</a>
             <span>›</span>
-            <span style="color:var(--primary);"><?= $product['name'] ?></span>
+            <span><?= $product['name'] ?></span>
         </div>
         <h1 style="margin-top:15px;"><?= $product['name'] ?></h1>
     </div>
@@ -73,10 +73,21 @@ include 'includes/header.php';
         <div class="product-details-grid">
             <!-- Product Visuals (Item 4: Image/Icon) -->
             <div class="product-visual-sticky">
-                <div style="background:var(--bg-light); border-radius:var(--radius-lg); padding:80px; text-align:center; position:relative; border:1px solid #e2e8f0; overflow:hidden;">
-                    <i class="<?= $product['icon'] ?>" style="font-size:120px; color:var(--primary); opacity:0.8;"></i>
-                    <div style="position:absolute; top:20px; right:20px; background:var(--success); color:#fff; padding:5px 15px; border-radius:30px; font-size:0.75rem; font-weight:700;">
-                        <i class="fas fa-check-circle"></i> <?= $product['approval'] ?>
+                <div style="background:var(--bg-light); border-radius:var(--radius-lg); overflow:hidden; position:relative; border:1px solid #e2e8f0;">
+                    
+                    <!-- <img src="<?= $p['image'] ?>" alt="<?= $p['name'] ?>" loading="lazy" onerror="this.src='images/cat-tablets.png'"> -->
+                    
+                    <div style="width:100%; height:280px; background:var(--bg-light); align-items:center; justify-content:center;">
+                        <?php  
+                        if(!empty($product['image'])){
+                        ?>
+                        <img src="<?= $product['image'] ?>" alt="<?= $product['name'] ?>" loading="lazy" onerror="this.src='images/cat-tablets.png'">
+                        <?php }else{ ?>
+                        <i class="<?= $product['icon'] ?>" style="font-size:100px; color:var(--primary); opacity:0.6;"></i>
+                        <?php } ?>
+                        <div style="position:absolute; top:20px; right:20px; background:var(--success); color:#fff; padding:5px 15px; border-radius:30px; font-size:0.75rem; font-weight:700;">
+                            <i class="fas fa-check-circle"></i> <?= $product['approval'] ?>
+                        </div>
                     </div>
                 </div>
                 
@@ -93,7 +104,7 @@ include 'includes/header.php';
                     <!-- Added Brochure Header just for the PDF but hidden on web using a tiny style -->
                     <div style="text-align:center; margin-bottom:30px;" class="pdf-header-only">
                         <h2 style="font-family:'Playfair Display', serif; font-size:2.8rem; color:var(--text-dark); margin-bottom:10px;">Product <span style="color:#0d3480;">Brochure</span></h2>
-                        <div style="width:80px; height:3px; background:#d4af37; margin:0 auto; border-radius:2px;"></div>
+                        <div style="width:80px; height:3px; background:var(--primary); margin:0 auto; border-radius:2px;"></div>
                     </div>
                     
                     <span class="section-badge" style="margin-bottom:10px;">Product Category: <?= ucfirst($product['category']) ?></span>
@@ -103,7 +114,7 @@ include 'includes/header.php';
                     <div style="padding:20px; border-bottom:1px solid #e2e8f0; background:var(--bg-light);">
                         <h4 style="margin:0; color:var(--text-dark);"><i class="fas fa-list-check" style="color:var(--primary); margin-right:10px;"></i> Technical Specifications</h4>
                     </div>
-                    <div style="padding:10px 0;">
+                    <div style="padding:10px 15px;">
                         <div class="product-spec-row">
                             <span class="product-spec-label">Product Name</span>
                             <span class="product-spec-value" style="font-weight:600;"><?= $product['name'] ?></span>
@@ -137,7 +148,7 @@ include 'includes/header.php';
 
                 </div>
 
-                <div style="margin-top:40px; padding:25px; background:rgba(30, 64, 175, 0.05); border-left:4px solid var(--primary); border-radius:var(--radius-sm);">
+                <div style="margin-top:20px; padding:25px; background:rgba(30, 64, 175, 0.05); border-left:4px solid var(--primary); border-radius:var(--radius-sm);">
                     <h5 style="margin-bottom:10px; color:var(--primary);"><i class="fas fa-circle-info"></i> Important Information</h5>
                     <p style="font-size:0.9rem; color:var(--text-body); margin:0;">The information provided here is for professional use only. Please consult with a healthcare practitioner before use. Always read the label and follow the directions for use.</p>
                 </div>

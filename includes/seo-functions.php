@@ -50,6 +50,11 @@ function get_seo_metadata($page_id, $custom_data = []) {
             'title' => 'Contact Us | Get in Touch with DUPIN HEALTHCARE',
             'description' => 'Contact DUPIN HEALTHCARE for partnership enquiries, product information, or manufacturing services.',
             'keywords' => 'contact pharma company, business enquiry, Lucknow pharma office'
+        ],
+        'certifications' => [
+            'title' => 'Certifications & Compliance | DUPIN HEALTHCARE PRIVATE LIMITED',
+            'description' => 'Explore our pharmaceutical certifications and quality compliance standards including GMP, GLP, HACCP, and WHO-GMP.',
+            'keywords' => 'pharma certifications, GMP certified, WHO-GMP compliance, GLP, HACCP pharma'
         ]
     ];
 

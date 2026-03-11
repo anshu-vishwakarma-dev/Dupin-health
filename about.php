@@ -12,7 +12,7 @@ include 'includes/header.php';
 <!-- Page Banner -->
 <section class="page-banner">
     <div class="container">
-        <h1>About DUPIN HEALTHCARE</h1>
+        <h1>ABOUT DUPIN HEALTHCARE</h1>
         <div class="breadcrumb">
             <a href="index.php">Home</a>
             <span>›</span>

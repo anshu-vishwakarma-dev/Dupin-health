@@ -17,7 +17,7 @@
                         <i class="fas fa-capsules"></i>
                         <span>DUPIN HEALTHCARE</span>
                     </div>
-                    <p>Caring for life, EVERYDAY. Your trusted excellence in Third-Party Pharma Manufacturing, providing high-quality medicine efficiently and affordably.</p>
+                    <p><strong>Caring for life, EVERYDAY.</strong> Your trusted excellence in Third-Party Pharma Manufacturing, providing high-quality medicine efficiently and affordably.</p>
                     <div class="footer-socials">
                         <a href="https://www.facebook.com/share/16suEJ2j5g/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/officialdupin" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -33,7 +33,8 @@
                         <li><a href="about.php"><i class="fas fa-chevron-right"></i> About Us</a></li>
                         <li><a href="products.php"><i class="fas fa-chevron-right"></i> Products</a></li>
                         <li><a href="services.php"><i class="fas fa-chevron-right"></i> Services</a></li>
-                        <li><a href="research.php"><i class="fas fa-chevron-right"></i> Research & Dev</a></li>
+                        <li><a href="certifications.php"><i class="fas fa-chevron-right"></i> Certifications</a></li>
+                        <!-- <li><a href="research.php"><i class="fas fa-chevron-right"></i> Research & Dev</a></li> -->
                         <li><a href="contact.php"><i class="fas fa-chevron-right"></i> Contact</a></li>
                     </ul>
                 </div>
@@ -47,7 +48,7 @@
                         <li><a href="products.php?filter=softgels"><i class="fas fa-chevron-right"></i> Softgels</a></li>
                         <li><a href="products.php?filter=syrups"><i class="fas fa-chevron-right"></i> Syrups/Liquids</a></li>
                         <li><a href="products.php?filter=others"><i class="fas fa-chevron-right"></i> Nasal Sprays/Creams</a></li>
-                        <li><a href="products.php"><i class="fas fa-chevron-right"></i> View All Portfolio</a></li>
+                        <li><a href="products.php"><i class="fas fa-chevron-right"></i> View All Products</a></li>
                     </ul>
                 </div>
 
@@ -128,7 +129,116 @@ function toggleChat() {
         setTimeout(() => { chatWindow.style.display = 'none'; }, 300);
     }
 }
+
+// --- Smart Chatbot Logic ---
+document.addEventListener('DOMContentLoaded', function() {
+    const chatInput = document.querySelector('.chatbot-input input');
+    const sendBtn = document.querySelector('.chatbot-input button');
+    const chatBody = document.querySelector('.chatbot-body');
+
+    if (!chatInput || !sendBtn || !chatBody) return;
+
+    function addMessage(text, isBot = false) {
+        if (isBot) {
+            const label = document.createElement('div');
+            label.className = 'chat-sender-label';
+            label.textContent = 'Dupin AI';
+            chatBody.appendChild(label);
+        }
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `chat-message ${isBot ? 'bot' : 'user'}`;
+        msgDiv.textContent = text;
+        chatBody.appendChild(msgDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
+        return msgDiv;
+    }
+
+    function showTypingIndicator() {
+        const indicator = document.createElement('div');
+        indicator.className = 'chat-message bot typing';
+        indicator.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+        chatBody.appendChild(indicator);
+        chatBody.scrollTop = chatBody.scrollHeight;
+        return indicator;
+    }
+
+    function getBotResponse(input) {
+        const msg = input.toLowerCase();
+        
+        if (msg.includes('hi') || msg.includes('hello') || msg.includes('hey')) {
+            return "Hello! I am Dupin AI. How can I assist you with our pharmaceutical services today?";
+        }
+        if (msg.includes('pcd') || msg.includes('franchise') || msg.includes('distributor')) {
+            return "Yes! Dupin Healthcare provides PCD Pharma Franchise opportunities across India. We offer monopoly rights and high-quality marketing support. You can call us at 1800-889-5167 for details.";
+        }
+        if (msg.includes('third party') || msg.includes('manufacturing') || msg.includes('contract')) {
+            return "We are a premier provider of Third-Party/Contract Manufacturing services. We specialize in Tablets, Capsules, Softgels, and Syrups with WHO-GMP standards.";
+        }
+        if (msg.includes('product') || msg.includes('medicine') || msg.includes('list') || msg.includes('tablets')) {
+            return "We have an extensive portfolio of 150+ formulations including Tablets, Capsules, Injections, and Syrups. You can view our full list on the 'Products' page.";
+        }
+        if (msg.includes('contact') || msg.includes('address') || msg.includes('phone') || msg.includes('email') || msg.includes('lucknow')) {
+            return "You can visit us at: Vastum City, Kanpur Road, Lucknow. Phone: +91 9648133333. Email: dupinhealthcarepvtltd@gmail.com.";
+        }
+        if (msg.includes('about') || msg.includes('company') || msg.includes('who')) {
+            return "Dupin Healthcare Private Limited is a Lucknow-based pharmaceutical leader incorporated in 2024, committed to high-quality healthcare formulations.";
+        }
+        if (msg.includes('thank')) {
+            return "You're welcome! Is there anything else I can help you with?";
+        }
+        if (msg.includes('ok') || msg.includes('okay') || msg.includes('sure') || msg.includes('i know') || msg.includes('understand')) {
+            return "Great! If you have any more questions or need specific details about our medicine range, feel free to ask.";
+        }
+        
+        return "I'm not sure I understand. Would you like to know about our PCD Franchise, Third-Party Manufacturing, or Product List?";
+    }
+
+    function handleSend() {
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        addMessage(text, false);
+        chatInput.value = '';
+
+        const typing = showTypingIndicator();
+
+        setTimeout(() => {
+            typing.remove();
+            const response = getBotResponse(text);
+            addMessage(response, true);
+        }, 1000);
+    }
+
+    sendBtn.addEventListener('click', handleSend);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleSend();
+    });
+});
 </script>
+
+<style>
+/* Chatbot Typing Indicator Styles */
+.chat-message.typing {
+    display: flex;
+    gap: 4px;
+    padding: 10px 15px;
+    width: fit-content;
+}
+.dot {
+    width: 6px;
+    height: 6px;
+    background: #94a3b8;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+.dot:nth-child(1) { animation-delay: -0.32s; }
+.dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+</style>
 
 <!-- ===== FLOATING CHATBOT ===== -->
 <div class="chatbot-wrapper">
@@ -141,22 +251,25 @@ function toggleChat() {
             <button onclick="toggleChat()" style="background:none; border:none; color:#fff; cursor:pointer;"><i class="fas fa-times"></i></button>
         </div>
         <div class="chatbot-body">
+            <div class="chat-sender-label" style="color: #000;">Dupin AI</div>
             <div class="chat-message bot">
-                Hello! Welcome to Dupin Healthcare. How can I assist you today?
+                Hello! Welcome to Dupin Healthcare. I am your virtual assistant.
             </div>
+            <div class="chat-sender-label">Dupin AI</div>
             <div class="chat-message bot">
-                Please feel free to ask about our products, services, or manufacturing facilities.
+                How can I assist you with <strong>PCD Franchise</strong>, <strong>Manufacturing</strong>, or <strong>Products</strong> today?
             </div>
         </div>
         <div class="chatbot-input">
-            <input type="text" placeholder="Type your message...">
+            <input type="text" placeholder="Ask something...">
             <button><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
     
     <!-- Chat Toggle Button -->
-    <button class="chatbot-toggle" onclick="toggleChat()">
+    <button class="chatbot-toggle" onclick="toggleChat()" title="Chat with Dupin AI">
         <i class="fas fa-comments"></i>
+        <span class="chat-tooltip">Chat with Dupin AI!</span>
     </button>
 </div>
 

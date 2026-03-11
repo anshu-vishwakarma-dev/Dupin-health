@@ -22,6 +22,9 @@ include 'includes/header.php';
                 <i class="fas fa-shield-alt"></i>
                 WHO-GMP | ISO | GLP Certified | HACCP Awarded
             </div>
+            <div style="font-family: var(--font-heading); font-weight: 700; color: var(--secondary); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; font-size: 0.9rem;">
+                Caring for life, EVERYDAY
+            </div>
             <h1 class="hero-title">
                 Your Trusted Excellence in <span class="highlight">Third-Party</span><br>
                 Pharma Manufacturing
@@ -166,16 +169,62 @@ include 'includes/header.php';
         <div class="products-grid stagger-children">
             <?php
             $products = [
-                ['icon'=>'fas fa-pills',        'tag'=>'General',      'name'=>'DUPICIT D3',        'desc'=>'High-quality Vitamin D3 supplement for bone health and immunity.'],
-                ['icon'=>'fas fa-tablets',       'tag'=>'Anti-allergic','name'=>'BILADUP M',         'desc'=>'Effective combination for allergic rhinitis and asthma management.'],
-                ['icon'=>'fas fa-capsules',      'tag'=>'Gastro',       'name'=>'DUPINEX DSR',       'desc'=>'Fast-acting relief for gastroesophageal reflux disease and acidity.'],
-                ['icon'=>'fas fa-syringe',       'tag'=>'Antibiotic',   'name'=>'DUPIMIST FT',       'desc'=>'Advanced antibiotic formulation for various bacterial infections.'],
+                [
+        'id' => 'duplicit-d3',
+        'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?vitamin,supplement,tablet&sig=101',
+        'category' => 'tablets',
+        'name' => 'DUPICIT D3',
+        'composition' => 'Cholecalciferol 60,000 IU',
+        'usage' => 'Vitamin D deficiency, Bone health',
+        'packaging' => '1x4 Tablets',
+        'form' => 'Tablet',
+        'stage' => 'Established',
+        'approval' => 'WHO-GMP',
+        'desc' => 'High-potency Vitamin D3 supplement for maintaining strong bones and supporting immune function.'
+    ],
+    [
+        'id' => 'biladup-m',
+        'icon' => 'fas fa-tablets',
+        'image' => 'https://source.unsplash.com/400x300/?allergy,medicine,pharmacy&sig=102',
+        'category' => 'tablets',
+        'name' => 'BILADUP M',
+        'composition' => 'Bilastine 20mg + Montelukast 10mg',
+        'usage' => 'Allergic rhinitis, Asthma',
+        'packaging' => '10x10 Tablets',
+        'approval' => 'WHO-GMP',
+        'desc' => 'Effective combination for managing seasonal allergies and exercise-induced asthma.'
+    ],
+    [
+        'id' => 'dupinac-sp',
+        'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?painkiller,inflammation,pills&sig=103',
+        'category' => 'tablets',
+        'name' => 'DUPINAC SP',
+        'composition' => 'Aceclofenac 100mg + Paracetamol 325mg + Serratiopeptidase 15mg',
+        'usage' => 'Pain & Inflammation relief',
+        'packaging' => '10x10 Tablets',
+        'approval' => 'WHO-GMP',
+        'desc' => 'Triple-action formula for rapid relief from post-operative pain and inflammatory conditions.'
+    ],
+    [
+        'id' => 'defocure-6',
+        'icon' => 'fas fa-pills',
+        'image' => 'https://source.unsplash.com/400x300/?steroid,immune,medication&sig=104',
+        'category' => 'tablets',
+        'name' => 'DEFOCURE 6',
+        'composition' => 'Deflazacort 6mg',
+        'usage' => 'Anti-inflammatory, Immunosuppressant',
+        'packaging' => '10x10 Tablets',
+        'approval' => 'WHO-GMP',
+        'desc' => 'Glucocorticoid used to treat various inflammatory and autoimmune diseases.'
+    ]
             ];
             foreach ($products as $p): ?>
             <div class="product-card anim-zoomIn">
                 <div class="product-card-img">
-                    <i class="<?= $p['icon'] ?>"></i>
-                    <span class="product-tag"><?= $p['tag'] ?></span>
+                    <img src="<?= $p['image'] ?>" alt="<?= $p['name'] ?>" loading="lazy" onerror="this.src='images/cat-tablets.png'">
+                    <span class="product-tag"><?= $p['category'] ?></span>
                 </div>
                 <div class="product-card-body">
                     <h3><?= $p['name'] ?></h3>
@@ -193,26 +242,26 @@ include 'includes/header.php';
 <!-- ===== STATS SECTION ===== -->
 <section class="stats-section">
     <div class="container">
-        <div class="stats-grid stagger-children">
+        <div class="stats-grid stagger-children" style="color: #fff;">
             <div class="stat-card anim-zoomIn">
-                <div class="stat-card-icon"><i class="fas fa-capsules"></i></div>
+                <div class="stat-card-icon" style="color: #0d3480;"><i class="fas fa-capsules"></i></div>
+                <div class="stat-number"><span class="counter" data-target="100">0</span><sup>+</sup></div>
+                <div class="stat-label" style="color: #0d3480;">Products in Portfolio</div>
+            </div>
+            <div class="stat-card anim-zoomIn">
+                <div class="stat-card-icon" style="color: #0d3480;"><i class="fas fa-flask"></i></div>
+                <div class="stat-number"><span class="counter" data-target="50">0</span></div>
+                <div class="stat-label" style="color: #0d3480;">Active R&D Projects</div>
+            </div>
+            <div class="stat-card anim-zoomIn">
+                <div class="stat-card-icon" style="color: #0d3480;"><i class="fas fa-globe"></i></div>
+                <div class="stat-number"><span class="counter" data-target="15">0</span><sup>+</sup></div>
+                <div class="stat-label" style="color: #0d3480;">Countries Served</div>
+            </div>
+            <div class="stat-card anim-zoomIn">
+                <div class="stat-card-icon" style="color: #0d3480;"><i class="fas fa-users"></i></div>
                 <div class="stat-number"><span class="counter" data-target="500">0</span><sup>+</sup></div>
-                <div class="stat-label">Products in Portfolio</div>
-            </div>
-            <div class="stat-card anim-zoomIn">
-                <div class="stat-card-icon"><i class="fas fa-flask"></i></div>
-                <div class="stat-number"><span class="counter" data-target="120">0</span></div>
-                <div class="stat-label">Active R&D Projects</div>
-            </div>
-            <div class="stat-card anim-zoomIn">
-                <div class="stat-card-icon"><i class="fas fa-globe"></i></div>
-                <div class="stat-number"><span class="counter" data-target="30">0</span><sup>+</sup></div>
-                <div class="stat-label">Countries Served</div>
-            </div>
-            <div class="stat-card anim-zoomIn">
-                <div class="stat-card-icon"><i class="fas fa-users"></i></div>
-                <div class="stat-number"><span class="counter" data-target="5000">0</span><sup>+</sup></div>
-                <div class="stat-label">Team Members</div>
+                <div class="stat-label" style="color: #0d3480;">Team Members</div>
             </div>
         </div>
     </div>
@@ -229,9 +278,9 @@ include 'includes/header.php';
         <div class="testimonials-grid stagger-children">
             <?php
             $testimonials = [
-                ['text'=>'Dupin Healthcare\'s quality formulations have significantly improved patient outcomes. The efficacy and quality of their products is unmatched.', 'name'=>'Dr. Priya Sharma', 'role'=>'Cardiologist, AIIMS Delhi', 'init'=>'PS', 'stars'=>5],
-                ['text'=>'We have partnered with Dupin Healthcare since their inception. Their regulatory team is exceptional, and the manufacturing quality speaks for itself. Truly world-class.', 'name'=>'Mr. Arjun Mehta', 'role'=>'Procurement Head, Apollo Hospitals', 'init'=>'AM', 'stars'=>5],
-                ['text'=>'The R&D support from Dupin Healthcare helped our institution optimize clinical integration. Their data management and compliance are outstanding.', 'name'=>'Dr. Sarah Williams', 'role'=>'Principal Investigator, Private Clinic', 'init'=>'SW', 'stars'=>5],
+                ['text'=>'As a PCD partner in North India, Dupin Healthcare has provided exceptional support and high-quality formulations. Their ethics and timely delivery have helped me grow my franchise tremendously.', 'name'=>'Mr. Vikram Singh', 'role'=>'PCD Franchise Partner, Punjab', 'init'=>'VS', 'stars'=>5],
+                ['text'=>'We chose Dupin Healthcare for third-party manufacturing of our syrup range. The quality standards and WHO-GMP compliance in their Lucknow unit are truly impressive. Highly recommended for contract services.', 'name'=>'Mr. Suresh Khanna', 'role'=>'MD, HealthCare Solutions', 'init'=>'SK', 'stars'=>5],
+                ['text'=>'Being based in Lucknow, I have personally seen Dupin Healthcare\'s commitment to excellence. Their tablets and capsules are highly efficacious and have become a brand of trust for us.', 'name'=>'Dr. Rajesh Gupta', 'role'=>'Senior Physician, Lucknow', 'init'=>'RG', 'stars'=>5],
             ];
             foreach ($testimonials as $t): ?>
             <div class="testimonial-card anim-fadeInUp">
@@ -255,11 +304,11 @@ include 'includes/header.php';
 <section class="cta-section">
     <div class="container">
         <div class="cta-content anim-fadeInUp">
-            <h2>Ready to Partner with DUPIN HEALTHCARE?</h2>
-            <p>Get in touch with our team to explore distribution partnerships, licensing opportunities, or to learn more about our product portfolio.</p>
+            <h2>Partner with DUPIN Healthcare for Quality Medicines</h2>
+            <p>Join our <strong>PCD Pharma Franchise</strong> network or partner with us for premium <strong>Third-Party Manufacturing</strong>. Experience excellence in quality and support.</p>
             <div class="cta-btns">
                 <a href="contact.php" class="btn btn-primary">
-                    <i class="fas fa-envelope"></i> Contact Us Today
+                    <i class="fas fa-handshake"></i> Partner With Us
                 </a>
                 <a href="products.php" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.4);">
                     <i class="fas fa-capsules"></i> View Products

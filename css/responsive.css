@@ -327,7 +327,7 @@
 
     /* ---- PAGE BANNER ---- */
     .page-banner {
-        padding: 60px 0 50px;
+        padding: 60px 0 90px;
     }
 
     /* ---- PIPELINE ---- */
@@ -441,30 +441,47 @@
         font-size: 2rem;
     }
 
+    @media (max-width: 768px) {
+    .stagger-children{
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .stagger-children{
+        grid-template-columns: 1fr !important;
+    }
+
+    .stagger-children > div{
+        padding: 20px !important;
+    }
+}
+
     .footer-grid {
         grid-template-columns: 1fr;
     }
 
-    .footer-col {
-        /* text-align: center; */
+    /* .footer-col {
+        text-align: center;
     }
 
     .footer-socials {
-        /* justify-content: center; */
-    }
+        justify-content: center;
+    } */
 
     .footer-col h4::after {
         left: 5%;
         transform: translateX(-50%);
     }
 
-    .footer-col ul a {
-        /* justify-content: center; */
+    /* .footer-col ul a {
+        justify-content: center;
     }
 
     .contact-list li {
-        /* justify-content: center; */
-    }
+        justify-content: center;
+    } */
 
     .about-badge-float {
         position: static;

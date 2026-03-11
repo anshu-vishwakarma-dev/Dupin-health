@@ -155,7 +155,8 @@ $canonical_url = $seo['canonical'];
                     <li><a href="about.php" class="<?php echo $current_page == 'about.php' ? 'active' : ''; ?>">About Us</a></li>
                     <li><a href="products.php" class="<?php echo $current_page == 'products.php' ? 'active' : ''; ?>">Products</a></li>
                     <li><a href="services.php" class="<?php echo $current_page == 'services.php' ? 'active' : ''; ?>">Services</a></li>
-                    <li><a href="research.php" class="<?php echo $current_page == 'research.php' ? 'active' : ''; ?>">Research &amp; Dev</a></li>
+                    <li><a href="certifications.php" class="<?php echo $current_page == 'certifications.php' ? 'active' : ''; ?>">Certifications</a></li>
+                    <!-- <li><a href="research.php" class="<?php echo $current_page == 'research.php' ? 'active' : ''; ?>">Research &amp; Dev</a></li> -->
                     <li><a href="contact.php" class="<?php echo $current_page == 'contact.php' ? 'active' : ''; ?>">Contact</a></li>
                 </ul>
             </nav>
