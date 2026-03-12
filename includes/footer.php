@@ -62,11 +62,11 @@
                         </li>
                         <li>
                             <i class="fas fa-phone-alt"></i>
-                            <span>18008895167, 9648133333, 9277083830</span>
+                            <a href="tel:18008895167">18008895167</a>,<a href="tel:9648133333">9648133333</a>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <span>dupinhealthcarepvtltd@gmail.com</span>
+                            <a href="mailto:dupinhealthcarepvtltd@gmail.com">dupinhealthcarepvtltd@gmail.com</a>
                         </li>
                         <li>
                             <i class="fas fa-clock"></i>

@@ -16,7 +16,7 @@ function get_seo_metadata($page_id, $custom_data = []) {
         'description' => 'DUPIN HEALTHCARE - Your Trusted Excellence in Third-Party Pharma Manufacturing. Bridging the gap between innovation and production.',
         'keywords' => 'pharma manufacturing, third-party manufacturing, PCD pharma franchise, pharmaceutical products, Baddi Himachal Pradesh, DUPIN HEALTHCARE',
         'canonical' => (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]",
-        'og_image' => 'images/og-image.jpg', // Default OG image
+        'og-image' => 'images/og-image.png', // Default OG image
         'og_type' => 'website'
     ];
 

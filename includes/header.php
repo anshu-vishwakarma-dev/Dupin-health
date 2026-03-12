@@ -36,14 +36,18 @@ $canonical_url = $seo['canonical'];
     <meta property="og:url" content="<?php echo $canonical_url; ?>">
     <meta property="og:title" content="<?php echo $seo['title']; ?>">
     <meta property="og:description" content="<?php echo $seo['description']; ?>">
-    <meta property="og:image" content="<?php echo $site_url . $seo['og_image']; ?>">
+    <meta property="og:image" content="<?php echo $site_url . $seo['og-image']; ?>">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="<?php echo $canonical_url; ?>">
     <meta property="twitter:title" content="<?php echo $seo['title']; ?>">
     <meta property="twitter:description" content="<?php echo $seo['description']; ?>">
-    <meta property="twitter:image" content="<?php echo $site_url . $seo['og_image']; ?>">
+    <meta property="twitter:image" content="<?php echo $site_url . $seo['og-image']; ?>">
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
 
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
@@ -66,13 +70,16 @@ $canonical_url = $seo['canonical'];
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Swiper CSS -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/> -->
+
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/unique.css">
 
-    
 </head>
 <body>
 
@@ -122,8 +129,8 @@ $canonical_url = $seo['canonical'];
 <div class="top-bar">
     <div class="container">
         <div class="top-bar-left">
-            <span><i class="fas fa-phone-alt"></i> 18008895167, 9648133333, 9277083830</span>
-            <span><i class="fas fa-envelope"></i> dupinhealthcarepvtltd@gmail.com</span>
+            <span><i class="fas fa-phone-alt"></i> <a href="tel:18008895167">18008895167</a>, <a href="tel:9648133333">9648133333</a></span>
+            <span><i class="fas fa-envelope"></i> <a href="mailto:dupinhealthcarepvtltd@gmail.com">dupinhealthcarepvtltd@gmail.com</a></span>
         </div>
         <div class="top-bar-right">
             <a href="https://www.facebook.com/share/16suEJ2j5g/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>

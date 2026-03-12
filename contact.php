@@ -69,8 +69,9 @@ include 'includes/header.php';
                         <div class="ci-icon"><i class="fas fa-phone-alt"></i></div>
                         <div>
                             <h4>Phone</h4>
-                            <p>18008895167 (Toll Free)<br>9648133333 / 9277083830 (Direct)</p>
+                            <p>18008895167 (Toll Free)<br>9648133333 (Direct)</p>
                         </div>
+                        <!-- 9277083830 -->
                     </div>
                     <div class="contact-info-block">
                         <div class="ci-icon"><i class="fas fa-envelope"></i></div>
@@ -126,19 +127,19 @@ include 'includes/header.php';
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">Full Name <span style="color:var(--danger);">*</span></label>
-                                <input type="text" id="name" name="name" placeholder="Dr. John Doe" required
+                                <input type="text" id="name" name="name" placeholder="Enter your full name" required
                                     value="<?= htmlspecialchars($_POST['name'] ?? '') ?>">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email Address <span style="color:var(--danger);">*</span></label>
-                                <input type="email" id="email" name="email" placeholder="john@hospital.com" required
+                                <input type="email" id="email" name="email" placeholder="Enter your email address" required
                                     value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210"
+                                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"
                                     value="<?= htmlspecialchars($_POST['phone'] ?? '') ?>">
                             </div>
                             <div class="form-group">
@@ -155,7 +156,7 @@ include 'includes/header.php';
                         </div>
                         <div class="form-group">
                             <label for="organisation">Organisation / Hospital</label>
-                            <input type="text" id="organisation" name="organisation" placeholder="Apollo Hospitals"
+                            <input type="text" id="organisation" name="organisation" placeholder="Enter your organisation name"
                                 value="<?= htmlspecialchars($_POST['organisation'] ?? '') ?>">
                         </div>
                         <div class="form-group">

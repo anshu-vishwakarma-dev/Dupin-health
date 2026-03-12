@@ -91,7 +91,7 @@ include 'includes/header.php';
             <div class="about-text-col anim-fadeInRight">
                 <div class="section-header">
                     <span class="section-badge">Who We Are</span>
-                    <h2 class="section-title">Premier <span>Third-Party</span> Manufacturing Partner</h2>
+                    <h2 class="section-title">Your Trusted Excellence in <span>Third-Party</span> Pharma Manufacturing</h2>
                     <div class="divider"></div>
                 </div>
                 <p class="about-desc">
@@ -244,23 +244,23 @@ include 'includes/header.php';
     <div class="container">
         <div class="stats-grid stagger-children" style="color: #fff;">
             <div class="stat-card anim-zoomIn">
-                <div class="stat-card-icon" style="color: #0d3480;"><i class="fas fa-capsules"></i></div>
+                <div class="stat-card-icon" style="color: #fff;"><i class="fas fa-capsules"></i></div>
                 <div class="stat-number"><span class="counter" data-target="100">0</span><sup>+</sup></div>
                 <div class="stat-label" style="color: #0d3480;">Products in Portfolio</div>
             </div>
             <div class="stat-card anim-zoomIn">
-                <div class="stat-card-icon" style="color: #0d3480;"><i class="fas fa-flask"></i></div>
-                <div class="stat-number"><span class="counter" data-target="50">0</span></div>
+                <div class="stat-card-icon" style="color: #fff;"><i class="fas fa-flask"></i></div>
+                <div class="stat-number"><span class="counter" data-target="20">0</span></div>
                 <div class="stat-label" style="color: #0d3480;">Active R&D Projects</div>
             </div>
             <div class="stat-card anim-zoomIn">
-                <div class="stat-card-icon" style="color: #0d3480;"><i class="fas fa-globe"></i></div>
+                <div class="stat-card-icon" style="color: #fff;"><i class="fas fa-globe"></i></div>
                 <div class="stat-number"><span class="counter" data-target="15">0</span><sup>+</sup></div>
                 <div class="stat-label" style="color: #0d3480;">Countries Served</div>
             </div>
             <div class="stat-card anim-zoomIn">
-                <div class="stat-card-icon" style="color: #0d3480;"><i class="fas fa-users"></i></div>
-                <div class="stat-number"><span class="counter" data-target="500">0</span><sup>+</sup></div>
+                <div class="stat-card-icon" style="color: #fff;"><i class="fas fa-users"></i></div>
+                <div class="stat-number"><span class="counter" data-target="300">0</span><sup>+</sup></div>
                 <div class="stat-label" style="color: #0d3480;">Team Members</div>
             </div>
         </div>
