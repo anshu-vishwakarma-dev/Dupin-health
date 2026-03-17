@@ -50,7 +50,7 @@ include 'includes/header.php';
                     'icon' => 'fas fa-truck-medical',
                     'title' => 'Multi-Tier Distribution',
                     'desc' => 'Our robust, technology-driven distribution network ensures that medicines reach patients reliably across Pan-India geographies.',
-                    'items' => ['C&F Agents (Regional Hubs)', 'Super Stockists for Specific Zones', 'PCD Franchise Partners', 'Retail & Hospital Supply Chain', 'Seamless Supply Management']
+                    'items' => ['C&F JS pharmaceutical Lucknow', 'Super Stockists for Specific Zones', 'PCD Franchise Partners', 'Retail & Hospital Supply Chain', 'Seamless Supply Management']
                 ],
                 [
                     'icon' => 'fas fa-shield-halved',

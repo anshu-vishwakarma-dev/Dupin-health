@@ -7,7 +7,8 @@ function get_site_url() {
     $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http");
     $host = $_SERVER['HTTP_HOST'];
     // Assuming the app is in /pharma-website/ subdirectory based on user paths
-    return "$protocol://$host/pharma-website/";
+    // return "$protocol://$host/pharma-website/";
+    return "$protocol://$host/";
 }
 
 function get_seo_metadata($page_id, $custom_data = []) {
@@ -22,33 +23,33 @@ function get_seo_metadata($page_id, $custom_data = []) {
 
     $pages = [
         'index' => [
-            'title' => 'DUPIN HEALTHCARE | Third-Party Pharma Manufacturing Excellence',
-            'description' => 'Premier Third-Party Pharma Manufacturing partner. We provide state-of-the-art manufacturing solutions in Baddi, Himachal Pradesh.',
-            'keywords' => 'third party pharma manufacturing, pharmaceutical contract manufacturing, pharma franchise India'
+            'title' => 'DUPIN HEALTHCARE PRIVATE LIMITED | Third Party Pharma Manufacturing Company in India',
+            'description' => 'DUPIN Healthcare Private Limited is a leading third-party pharma manufacturing company offering high-quality pharmaceutical products and contract manufacturing services from Baddi, Himachal Pradesh, India.',
+            'keywords' => 'third party pharma manufacturing company, pharma contract manufacturing India, pharmaceutical manufacturing company, pcd pharma franchise India'
         ],
         'about' => [
-            'title' => 'About Us | DUPIN HEALTHCARE PRIVATE LIMITED',
-            'description' => 'Learn about DUPIN HEALTHCARE, our mission, vision, and our state-of-the-art manufacturing facility in Baddi.',
+            'title' => 'About DUPIN HEALTHCARE PRIVATE LIMITED | Trusted Pharma Manufacturing Company',
+            'description' => 'Learn about DUPIN Healthcare Private Limited, our mission, vision, and commitment to high-quality pharmaceutical manufacturing and healthcare innovation.',
             'keywords' => 'about dupin healthcare, pharma leaders, manufacturing excellence'
         ],
         'products' => [
-            'title' => 'Our Pharmaceutical Products | DUPIN HEALTHCARE',
-            'description' => 'Explore our diverse portfolio of high-quality formulations including tablets, capsules, syrups, and softgels.',
+            'title' => 'Pharmaceutical Products | Tablets, Capsules, Syrups | DUPIN HEALTHCARE',
+            'description' => 'Explore our wide range of pharmaceutical formulations including tablets, capsules, syrups, and softgels manufactured with high quality standards.',
             'keywords' => 'pharma products list, tablets, capsules, syrups, pharmaceutical formulations'
         ],
         'services' => [
-            'title' => 'Pharmaceutical Services | Third-Party & PCD Franchise',
+            'title' => 'Pharma Services | Third Party Manufacturing & PCD Pharma Franchise | DUPIN HEALTHCARE',
             'description' => 'Comprehensive pharma solutions: Third-party manufacturing, PCD Pharma Franchise, and robust distribution network.',
             'keywords' => 'pcd pharma franchise, third party manufacturing services, pharma distribution'
         ],
         'research' => [
-            'title' => 'Research & Development | DUPIN HEALTHCARE',
+            'title' => 'Research & Development (R&D) | DUPIN HEALTHCARE PRIVATE LIMITED',
             'description' => 'Our commitment to innovation and quality through advanced R&D and state-of-the-art laboratory facilities.',
             'keywords' => 'pharma R&D, pharmaceutical research, drug development'
         ],
         'contact' => [
-            'title' => 'Contact Us | Get in Touch with DUPIN HEALTHCARE',
-            'description' => 'Contact DUPIN HEALTHCARE for partnership enquiries, product information, or manufacturing services.',
+            'title' => 'Contact DUPIN Healthcare Private Limited | Pharma Company Enquiry',
+            'description' => 'Contact DUPIN Healthcare Private Limited for partnership enquiries, product information, or manufacturing services.',
             'keywords' => 'contact pharma company, business enquiry, Lucknow pharma office'
         ],
         'certifications' => [

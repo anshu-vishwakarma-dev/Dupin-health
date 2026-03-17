@@ -140,7 +140,7 @@ include 'includes/header.php';
             $services = [
                 ['icon'=>'fas fa-industry',       'title'=>'Third-Party Manufacturing','desc'=>'Seamless contract manufacturing solutions for a wide array of therapeutic segments with precision and compliance.', 'link'=>'services.php'],
                 ['icon'=>'fas fa-handshake',      'title'=>'PCD Pharma Franchise',    'desc'=>'Exclusive franchise opportunities for partners to represent the Dupin brand in their local districts.',           'link'=>'services.php'],
-                ['icon'=>'fas fa-truck-medical',  'title'=>'Distribution Reach',      'desc'=>'Robust multi-tier distribution model including C&F agents, super stockists, and retail supply.',              'link'=>'services.php'],
+                ['icon'=>'fas fa-truck-medical',  'title'=>'Distribution Reach',      'desc'=>'Robust multi-tier distribution model including C&F agents, super stockists, and retail supply, supporting CFA - JS pharmaceutical Lucknow distribution.',              'link'=>'services.php'],
                 ['icon'=>'fas fa-shield-halved',  'title'=>'Quality Assurance',       'desc'=>'Ensuring every product meets international safety benchmarks like WHO-GMP and ISO-GLP.',                     'link'=>'services.php'],
                 ['icon'=>'fas fa-flask-vial',     'title'=>'Advanced Formulations',   'desc'=>'Continuously upgrading technology and processes to deliver advanced therapeutic formulations.',              'link'=>'services.php'],
                 ['icon'=>'fas fa-briefcase',      'title'=>'Business Partnership',    'desc'=>'Operating as a seamless extension of your own business to help you focus on marketing and distribution.',     'link'=>'services.php'],
