@@ -232,7 +232,15 @@ button {
     color: var(--secondary);
 }
 
-/* ---- HEADER / NAV ---- */
+.footer-wave .wave-path {
+    color: #0a1628;
+}
+
+body.dark-mode .footer-wave .wave-path {
+    color: #0a1628;
+    /* Stays dark for the wave transition if needed, or change to var(--bg-white) if it should match body */
+}
+
 .main-header {
     position: fixed;
     top: 0;
@@ -2247,28 +2255,28 @@ button {
 
 /* Adjust Dark Mode for Chatbot */
 .dark-mode .chatbot-window {
-    background: var(--dark-card);
-    border-color: var(--dark-border);
+    background: var(--bg-white);
+    border-color: var(--border);
 }
 
 .dark-mode .chatbot-body {
-    background: var(--dark-bg);
+    background: var(--bg-light);
 }
 
 .dark-mode .chat-message.bot {
-    background: var(--dark-border);
-    color: var(--text-light);
+    background: var(--border);
+    color: var(--text-body);
 }
 
 .dark-mode .chatbot-input {
-    background: var(--dark-card);
-    border-color: var(--dark-border);
+    background: var(--bg-white);
+    border-color: var(--border);
 }
 
 .dark-mode .chatbot-input input {
-    background: var(--dark-bg);
-    border-color: var(--dark-border);
-    color: var(--text-light);
+    background: var(--bg-light);
+    border-color: var(--border);
+    color: var(--text-dark);
 }
 
 /* =========================================================================
@@ -2383,7 +2391,7 @@ button {
 }
 
 body.dark-mode .preloader {
-    background: var(--dark-bg);
+    background: var(--bg-white);
 }
 
 body.dark-mode .loader-text {

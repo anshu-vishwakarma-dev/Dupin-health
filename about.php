@@ -113,19 +113,19 @@ include 'includes/header.php';
             <div class="services-grid stagger-children" style="margin-top:20px;">
                 <?php
                 $values = [
-                    ['icon'=>'fas fa-heart', 'title'=>'Patient First',      'desc'=>'Every decision starts with the question: how does this benefit the patient? Patient welfare guides all our actions.'],
-                    ['icon'=>'fas fa-shield-alt','title'=>'Integrity',       'desc'=>'We uphold the highest ethical standards in research, manufacturing, and business conduct. No compromise.'],
-                    ['icon'=>'fas fa-lightbulb','title'=>'Innovation',       'desc'=>'We foster a culture where creative thinking and bold ideas thrive, continuously investing in better formulations.'],
-                    ['icon'=>'fas fa-leaf',   'title'=>'Sustainability',     'desc'=>'Committed to green chemistry, carbon-neutral manufacturing, and responsible supply chain practices.'],
-                    ['icon'=>'fas fa-users',  'title'=>'Collaboration',      'desc'=>'We believe great science happens when diverse minds work together — internally and with global partners.'],
-                    ['icon'=>'fas fa-star',   'title'=>'Excellence',         'desc'=>'From the lab to the pharmacy shelf, we pursue perfection in quality, efficacy, and safety at every step.'],
+                    ['icon' => 'fas fa-heart', 'title' => 'Patient First',      'desc' => 'Every decision starts with the question: how does this benefit the patient? Patient welfare guides all our actions.'],
+                    ['icon' => 'fas fa-shield-alt', 'title' => 'Integrity',       'desc' => 'We uphold the highest ethical standards in research, manufacturing, and business conduct. No compromise.'],
+                    ['icon' => 'fas fa-lightbulb', 'title' => 'Innovation',       'desc' => 'We foster a culture where creative thinking and bold ideas thrive, continuously investing in better formulations.'],
+                    ['icon' => 'fas fa-leaf',   'title' => 'Sustainability',     'desc' => 'Committed to green chemistry, carbon-neutral manufacturing, and responsible supply chain practices.'],
+                    ['icon' => 'fas fa-users',  'title' => 'Collaboration',      'desc' => 'We believe great science happens when diverse minds work together — internally and with global partners.'],
+                    ['icon' => 'fas fa-star',   'title' => 'Excellence',         'desc' => 'From the lab to the pharmacy shelf, we pursue perfection in quality, efficacy, and safety at every step.'],
                 ];
                 foreach ($values as $v): ?>
-                <div class="service-card anim-fadeInUp">
-                    <div class="service-icon"><i class="<?= $v['icon'] ?>"></i></div>
-                    <h3><?= $v['title'] ?></h3>
-                    <p><?= $v['desc'] ?></p>
-                </div>
+                    <div class="service-card anim-fadeInUp">
+                        <div class="service-icon"><i class="<?= $v['icon'] ?>"></i></div>
+                        <h3><?= $v['title'] ?></h3>
+                        <p><?= $v['desc'] ?></p>
+                    </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -161,9 +161,9 @@ include 'includes/header.php';
                     <p>Hazard Analysis Critical Control Point awarded for supreme safety and hygiene standards.</p>
                 </div>
             </div>
-            
+
             <div style="text-align:center; margin-top:40px; color:var(--text-light); font-size: 0.95rem;">
-                <i class="fas fa-id-card-clip" style="color:var(--secondary); margin-right:8px;"></i> 
+                <i class="fas fa-id-card-clip" style="color:var(--secondary); margin-right:8px;"></i>
                 All manufacturing licenses and regulatory approvals are maintained as per the latest <strong>Drug & Cosmetics Act</strong> guidelines.
             </div>
         </div>
@@ -179,26 +179,26 @@ include 'includes/header.php';
             <div class="team-grid stagger-children">
                 <?php
                 $team = [
-                    ['name'=>'AISHWARYA SINGH TOMAR', 'role'=>'Director', 'desc'=>'Driving the vision and strategic growth of Dupin Healthcare.', 'init'=>'AS'],
-                    ['name'=>'PUNEET SINGH', 'role'=>'Director', 'desc'=>'Ensuring operational excellence and manufacturing quality.', 'init'=>'PS'],
-                    ['name'=>'NEELAM SINGH', 'role'=>'Director', 'desc'=>'Focusing on business integrity and partnership management.', 'init'=>'NS'],
+                    ['name' => 'AISHWARYA SINGH TOMAR', 'role' => 'Director', 'desc' => 'Driving the vision and strategic growth of Dupin Healthcare.', 'init' => 'AS'],
+                    ['name' => 'PUNEET SINGH', 'role' => 'Director', 'desc' => 'Ensuring operational excellence and manufacturing quality.', 'init' => 'PS'],
+                    ['name' => 'NEELAM SINGH', 'role' => 'Director', 'desc' => 'Focusing on business integrity and partnership management.', 'init' => 'NS'],
                 ];
                 foreach ($team as $m): ?>
-                <div class="team-card anim-zoomIn">
-                    <div class="team-photo">
-                        <i class="fas fa-user-tie"></i>
-                        <div class="team-photo-overlay">
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <div class="team-card anim-zoomIn">
+                        <div class="team-photo">
+                            <i class="fas fa-user-tie"></i>
+                            <div class="team-photo-overlay">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <div class="author-avatar" style="margin:0 auto 10px;"><?= $m['init'] ?></div>
+                            <h4><?= $m['name'] ?></h4>
+                            <div class="role"><?= $m['role'] ?></div>
+                            <p><?= $m['desc'] ?></p>
                         </div>
                     </div>
-                    <div class="team-info">
-                        <div class="author-avatar" style="margin:0 auto 10px;"><?= $m['init'] ?></div>
-                        <h4><?= $m['name'] ?></h4>
-                        <div class="role"><?= $m['role'] ?></div>
-                        <p><?= $m['desc'] ?></p>
-                    </div>
-                </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -223,10 +223,14 @@ include 'includes/header.php';
 </section>
 
 <script>
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
-}, { threshold: 0.12 });
-document.querySelectorAll('.anim-fadeInUp,.anim-fadeInLeft,.anim-fadeInRight,.anim-zoomIn').forEach(el => observer.observe(el));
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('in-view');
+        });
+    }, {
+        threshold: 0.12
+    });
+    document.querySelectorAll('.anim-fadeInUp,.anim-fadeInLeft,.anim-fadeInRight,.anim-zoomIn').forEach(el => observer.observe(el));
 </script>
 
 <?php include 'includes/footer.php'; ?>

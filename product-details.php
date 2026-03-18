@@ -73,7 +73,7 @@ include 'includes/header.php';
         <div class="product-details-grid">
             <!-- Product Visuals (Item 4: Image/Icon) -->
             <div class="product-visual-sticky">
-                <div style="background:var(--bg-light); border-radius:var(--radius-lg); overflow:hidden; position:relative; border:1px solid #e2e8f0;">
+                <div style="background:var(--bg-white); border-radius:var(--radius-lg); overflow:hidden; position:relative; border:1px solid var(--border);">
                     
                     <!-- <img src="<?= $p['image'] ?>" alt="<?= $p['name'] ?>" loading="lazy" onerror="this.src='images/cat-tablets.png'"> -->
                     
@@ -103,15 +103,15 @@ include 'includes/header.php';
                 <div id="brochure-content" class="brochure-content">
                     <!-- Added Brochure Header just for the PDF but hidden on web using a tiny style -->
                     <div style="text-align:center; margin-bottom:30px;" class="pdf-header-only">
-                        <h2 style="font-family:'Playfair Display', serif; font-size:2.8rem; color:var(--text-dark); margin-bottom:10px;">Product <span style="color:#0d3480;">Brochure</span></h2>
+                        <h2 style="font-family:'Playfair Display', serif; font-size:2.8rem; color:var(--text-dark); margin-bottom:10px;">Product <span style="color:var(--primary);">Brochure</span></h2>
                         <div style="width:80px; height:3px; background:var(--primary); margin:0 auto; border-radius:2px;"></div>
                     </div>
                     
                     <span class="section-badge" style="margin-bottom:10px;">Product Category: <?= ucfirst($product['category']) ?></span>
                     <h2 style="font-size:2.4rem; color:var(--text-dark); margin-bottom:15px;"><?= $product['name'] ?></h2>
                     <p style="font-size:1.1rem; color:var(--text-body); line-height:1.7; margin-bottom:30px;"><?= $product['desc'] ?></p>
-                <div style="background:#fff; border:1px solid #e2e8f0; border-radius:var(--radius-md); overflow:hidden;">
-                    <div style="padding:20px; border-bottom:1px solid #e2e8f0; background:var(--bg-light);">
+                <div style="background:var(--bg-white); border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden;">
+                    <div style="padding:20px; border-bottom:1px solid var(--border); background:var(--bg-light);">
                         <h4 style="margin:0; color:var(--text-dark);"><i class="fas fa-list-check" style="color:var(--primary); margin-right:10px;"></i> Technical Specifications</h4>
                     </div>
                     <div style="padding:10px 15px;">

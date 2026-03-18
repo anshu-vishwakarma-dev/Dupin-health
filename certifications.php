@@ -7,8 +7,8 @@ require_once 'includes/seo-functions.php';
 $cert_files = [
     'GMP'    => 'images/certificates/gmp.png', // Example: 'images/certificates/gmp-file.jpg'
     'GLP'    => 'images/certificates/GLP.jpeg', // Example: 'images/certificates/glp-file.pdf'
-    'HACCP'  => 'images/certificates/HACCP.jpg', 
-    'WHO'    => 'images/certificates/WHO.jpg', 
+    'HACCP'  => 'images/certificates/HACCP.jpg',
+    'WHO'    => 'images/certificates/WHO.jpg',
 ];
 
 // Breadcrumb Schema
@@ -36,7 +36,7 @@ include 'includes/header.php';
 <!-- Certifications Content -->
 <section class="certifications-page">
     <div class="container">
-        
+
         <!-- Section Heading & Intro -->
         <div class="cert-intro anim-fadeInUp">
             <div class="section-header">
@@ -73,14 +73,14 @@ include 'includes/header.php';
         <div class="key-certifications">
             <h3 class="subsection-title">Key Certifications</h3>
             <div class="cert-desc-grid">
-                
+
                 <!-- GMP -->
                 <div class="cert-desc-card anim-fadeInUp">
                     <div class="card-num">01</div>
                     <div class="card-info">
                         <h4>GMP Certified (Good Manufacturing Practices)</h4>
                         <p>Our manufacturing facilities operate under GMP standards, ensuring that pharmaceutical products are consistently produced and controlled according to quality standards.</p>
-                        <?php if(!empty($cert_files['GMP'])): ?>
+                        <?php if (!empty($cert_files['GMP'])): ?>
                             <a href="<?php echo $cert_files['GMP']; ?>" target="_blank" class="view-cert-btn">
                                 <i class="fas fa-file-pdf"></i> View Certificate
                             </a>
@@ -96,7 +96,7 @@ include 'includes/header.php';
                     <div class="card-info">
                         <h4>GLP Certified (Good Laboratory Practices)</h4>
                         <p>Our laboratories follow GLP guidelines, ensuring accurate testing, reliable results, and strict quality control during product development and testing.</p>
-                        <?php if(!empty($cert_files['GLP'])): ?>
+                        <?php if (!empty($cert_files['GLP'])): ?>
                             <a href="<?php echo $cert_files['GLP']; ?>" target="_blank" class="view-cert-btn">
                                 <i class="fas fa-file-pdf"></i> View Certificate
                             </a>
@@ -112,7 +112,7 @@ include 'includes/header.php';
                     <div class="card-info">
                         <h4>HACCP Compliance</h4>
                         <p>We maintain HACCP (Hazard Analysis and Critical Control Points) standards to ensure safety and quality across our manufacturing and packaging processes.</p>
-                        <?php if(!empty($cert_files['HACCP'])): ?>
+                        <?php if (!empty($cert_files['HACCP'])): ?>
                             <a href="<?php echo $cert_files['HACCP']; ?>" target="_blank" class="view-cert-btn">
                                 <i class="fas fa-file-pdf"></i> View Certificate
                             </a>
@@ -128,7 +128,7 @@ include 'includes/header.php';
                     <div class="card-info">
                         <h4>WHO-GMP Compliance</h4>
                         <p>Our production processes align with WHO-GMP standards, demonstrating our commitment to global pharmaceutical quality practices.</p>
-                        <?php if(!empty($cert_files['WHO'])): ?>
+                        <?php if (!empty($cert_files['WHO'])): ?>
                             <a href="<?php echo $cert_files['WHO']; ?>" target="_blank" class="view-cert-btn">
                                 <i class="fas fa-file-pdf"></i> View Certificate
                             </a>
@@ -158,48 +158,214 @@ include 'includes/header.php';
         </div>
 
     </div>
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content anim-fadeInUp">
+            <h2>Join the DUPIN HEALTHCARE Family</h2>
+            <p>We are always looking for dedicated partners and professionals passionate about pharmaceutical excellence. Explore opportunities with us.</p>
+            <div class="cta-btns">
+                <a href="contact.php" class="btn btn-primary"><i class="fas fa-user-plus"></i> Join Our Team</a>
+                <a href="contact.php" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.4);">
+                    <i class="fas fa-envelope"></i> Get In Touch
+                </a>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- Simple Styling -->
 <style>
-.certifications-page { padding: 80px 0; background: #f8fafc; }
-.cert-intro { max-width: 900px; margin: 0 auto 60px; text-align: center; }
-.cert-logo-row { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 60px; }
-.cert-logo-item { display: flex; flex-direction: column; align-items: center; width: 150px; }
-.cert-logo-item .logo-box { width: 100px; height: 100px; background: #fff; border: 3px solid var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 10px; box-shadow: var(--shadow-sm); }
-.cert-logo-item span { font-weight: 700; font-size: 0.85rem; color: var(--text-dark); }
+    body.dark-mode .quality-assurance-box {
+        background: #1e293b !important;
+    }
+    .certifications-page {
+        padding: 80px 0;
+        background: var(--bg-light);
+    }
 
-.subsection-title { text-align: center; font-size: 1.8rem; margin-bottom: 40px; color: var(--text-dark); }
-.cert-desc-grid { display: flex; flex-direction: column; gap: 20px; max-width: 1000px; margin: 0 auto 60px; }
-.cert-desc-card { background: #fff; padding: 30px; border-radius: 15px; display: flex; gap: 25px; border: 1px solid var(--border); transition: var(--transition); }
-.cert-desc-card:hover { transform: translateX(10px); border-color: var(--primary); box-shadow: var(--shadow-md); }
-.card-num { font-size: 2.5rem; font-weight: 900; color: rgba(27, 79, 168, 0.1); }
-.card-info h4 { color: var(--primary); font-size: 1.2rem; margin-bottom: 10px; }
-.card-info p { margin-bottom: 15px; font-size: 0.95rem; }
+    .cert-intro {
+        max-width: 900px;
+        margin: 0 auto 60px;
+        text-align: center;
+    }
 
-.view-cert-btn { background: var(--primary); color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: 0.9rem; }
-.view-cert-btn:hover { background: var(--primary-dark); transform: scale(1.05); }
+    .cert-logo-row {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        margin-bottom: 60px;
+    }
 
-.quality-assurance-box { background: var(--text-dark); color: #fff; padding: 50px; border-radius: 25px; }
-.qa-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-.qa-header i { font-size: 2rem; color: var(--secondary); }
-.qa-header h3 { font-size: 1.5rem; color: var(--secondary); margin: 0; }
-.qa-points { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 20px; }
-.qa-point { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; }
-.qa-point i { color: var(--secondary); }
+    .cert-logo-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 150px;
+    }
 
-@media (max-width: 768px) {
-    .cert-desc-card { flex-direction: column; text-align: center; padding: 20px; }
-    .qa-header { flex-direction: column; text-align: center; }
-}
+    .cert-logo-item .logo-box {
+        width: 100px;
+        height: 100px;
+        background: var(--bg-white);
+        border: 3px solid var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--primary);
+        margin-bottom: 10px;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .cert-logo-item span {
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: var(--text-dark);
+    }
+
+    .subsection-title {
+        text-align: center;
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+        color: var(--text-dark);
+    }
+
+    .cert-desc-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 1000px;
+        margin: 0 auto 60px;
+    }
+
+    .cert-desc-card {
+        background: var(--bg-white);
+        padding: 30px;
+        border-radius: 15px;
+        display: flex;
+        gap: 25px;
+        border: 1px solid var(--border);
+        transition: var(--transition);
+    }
+
+    .cert-desc-card:hover {
+        transform: translateX(10px);
+        border-color: var(--primary);
+        box-shadow: var(--shadow-md);
+    }
+
+    .card-num {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: rgba(27, 79, 168, 0.1);
+    }
+
+    .card-info h4 {
+        color: var(--primary);
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .card-info p {
+        margin-bottom: 15px;
+        font-size: 0.95rem;
+        color: var(--text-body);
+    }
+
+    .view-cert-btn {
+        background: var(--primary);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    .view-cert-btn:hover {
+        background: var(--primary-dark);
+        transform: scale(1.05);
+    }
+
+    .quality-assurance-box {
+        background: var(--border);
+        color: var(--text-dark);
+        padding: 50px;
+        border-radius: 25px;
+        border: 1px solid var(--border);
+    }
+
+    body.dark-mode .quality-assurance-box {
+        background: var(--bg-light);
+    }
+
+    .qa-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .qa-header i {
+        font-size: 2rem;
+        color: var(--secondary);
+    }
+
+    .qa-header h3 {
+        font-size: 1.5rem;
+        color: var(--secondary);
+        margin: 0;
+    }
+
+    .qa-points {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .qa-point {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.95rem;
+        color: var(--text-body);
+    }
+
+    .qa-point i {
+        color: var(--secondary);
+    }
+
+    @media (max-width: 768px) {
+        .cert-desc-card {
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .qa-header {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
 </style>
 
 <script>
-// Scroll animations
-const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.anim-fadeInUp').forEach(el => obs.observe(el));
+    // Scroll animations
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('in-view');
+        });
+    }, {
+        threshold: 0.1
+    });
+    document.querySelectorAll('.anim-fadeInUp').forEach(el => obs.observe(el));
 </script>
 
 <?php include 'includes/footer.php'; ?>

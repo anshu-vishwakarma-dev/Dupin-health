@@ -60,16 +60,16 @@ include 'includes/header.php';
                 ],
             ];
             foreach ($services as $s): ?>
-            <div class="sf-card anim-fadeInUp">
-                <div class="sf-icon"><i class="<?= $s['icon'] ?>"></i></div>
-                <h3><?= $s['title'] ?></h3>
-                <p><?= $s['desc'] ?></p>
-                <ul class="sf-list">
-                    <?php foreach ($s['items'] as $item): ?>
-                    <li><i class="fas fa-check-circle"></i> <?= $item ?></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
+                <div class="sf-card anim-fadeInUp">
+                    <div class="sf-icon"><i class="<?= $s['icon'] ?>"></i></div>
+                    <h3><?= $s['title'] ?></h3>
+                    <p><?= $s['desc'] ?></p>
+                    <ul class="sf-list">
+                        <?php foreach ($s['items'] as $item): ?>
+                            <li><i class="fas fa-check-circle"></i> <?= $item ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
             <?php endforeach; ?>
         </div>
 
@@ -119,17 +119,29 @@ include 'includes/header.php';
                 <div class="presence-col">
                     <h4><i class="fas fa-map-location-dot"></i> Domestic Presence (Pan-India)</h4>
                     <ul class="presence-list">
-                        <li><i class="fas fa-circle-check"></i> <div><strong>North India:</strong> Uttar Pradesh (Base), Delhi NCR, Haryana, Punjab, and Uttarakhand.</div></li>
-                        <li><i class="fas fa-circle-check"></i> <div><strong>Central India:</strong> Madhya Pradesh and Chhattisgarh.</div></li>
-                        <li><i class="fas fa-circle-check"></i> <div><strong>East & West India:</strong> Expanding networks in Bihar, Rajasthan, and Gujarat.</div></li>
+                        <li><i class="fas fa-circle-check"></i>
+                            <div><strong>North India:</strong> Uttar Pradesh (Base), Delhi NCR, Haryana, Punjab, and Uttarakhand.</div>
+                        </li>
+                        <li><i class="fas fa-circle-check"></i>
+                            <div><strong>Central India:</strong> Madhya Pradesh and Chhattisgarh.</div>
+                        </li>
+                        <li><i class="fas fa-circle-check"></i>
+                            <div><strong>East & West India:</strong> Expanding networks in Bihar, Rajasthan, and Gujarat.</div>
+                        </li>
                     </ul>
                 </div>
                 <div class="presence-col">
                     <h4><i class="fas fa-route"></i> Strategic Locations</h4>
                     <ul class="presence-list">
-                        <li><i class="fas fa-location-crosshairs"></i> <div><strong>Regional Hubs:</strong> Fast-track delivery to major metropolitan cities.</div></li>
-                        <li><i class="fas fa-city"></i> <div><strong>Tier 2 & 3 Cities:</strong> Ensuring availability in smaller towns and rural centers.</div></li>
-                        <li><i class="fas fa-hospital-user"></i> <div><strong>Institutional Supply:</strong> Supplying directly to leading hospitals and government departments.</div></li>
+                        <li><i class="fas fa-location-crosshairs"></i>
+                            <div><strong>Regional Hubs:</strong> Fast-track delivery to major metropolitan cities.</div>
+                        </li>
+                        <li><i class="fas fa-city"></i>
+                            <div><strong>Tier 2 & 3 Cities:</strong> Ensuring availability in smaller towns and rural centers.</div>
+                        </li>
+                        <li><i class="fas fa-hospital-user"></i>
+                            <div><strong>Institutional Supply:</strong> Supplying directly to leading hospitals and government departments.</div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -149,11 +161,11 @@ include 'includes/header.php';
                 <div class="divider" style="margin:16px 0 0 0;"></div>
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px;" class="stagger-children">
-                <div class="anim-fadeInUp" style="background:#fff; padding:30px; border-radius:var(--radius-lg); border-left: 5px solid var(--primary);">
+                <div class="anim-fadeInUp" style="background:var(--bg-white); padding:30px; border-radius:var(--radius-lg); border-left: 5px solid var(--primary);">
                     <h4 style="color:var(--primary); margin-bottom:12px; font-weight:800;">Do you provide PCD pharma franchise?</h4>
                     <p style="font-weight:600; color:var(--text-dark);">Yes, DUPIN HEALTHCARE provides exclusive PCD Pharma Franchise opportunities across India with monopoly rights.</p>
                 </div>
-                <div class="anim-fadeInUp" style="background:#fff; padding:30px; border-radius:var(--radius-lg); border-left: 5px solid var(--secondary);">
+                <div class="anim-fadeInUp" style="background:var(--bg-white); padding:30px; border-radius:var(--radius-lg); border-left: 5px solid var(--secondary);">
                     <h4 style="color:var(--secondary); margin-bottom:12px; font-weight:800;">Do you offer Third-Party Manufacturing?</h4>
                     <p style="font-weight:600; color:var(--text-dark);">Yes, DUPIN HEALTHCARE is a premier provider of Third-Party contract manufacturing services with state-of-the-art facilities.</p>
                 </div>
@@ -169,19 +181,19 @@ include 'includes/header.php';
             <div class="stats-grid stagger-children" style="margin-top:50px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
                 <?php
                 $reasons = [
-                    ['icon'=>'fas fa-award',        'num'=>'WHO-GMP', 'label'=>'Quality Certified & WHO-GMP Compliant'],
-                    ['icon'=>'fas fa-truck-fast',   'num'=>'Pan-India','label'=>'Robust Supply Network Across India'],
-                    ['icon'=>'fas fa-clock',         'num'=>'ESTD 2024',   'label'=>'Modern Excellence Integrated Since 2024'],
-                    ['icon'=>'fas fa-industry',      'num'=>'Baddi Unit',    'label'=>'State-of-the-Art Formulation Facility'],
+                    ['icon' => 'fas fa-award',        'num' => 'WHO-GMP', 'label' => 'Quality Certified & WHO-GMP Compliant'],
+                    ['icon' => 'fas fa-truck-fast',   'num' => 'Pan-India', 'label' => 'Robust Supply Network Across India'],
+                    ['icon' => 'fas fa-clock',         'num' => 'ESTD 2024',   'label' => 'Modern Excellence Integrated Since 2024'],
+                    ['icon' => 'fas fa-industry',      'num' => 'Baddi Unit',    'label' => 'State-of-the-Art Formulation Facility'],
                 ];
                 foreach ($reasons as $r): ?>
-                <div class="reason-card anim-zoomIn">
-                    <div class="reason-icon-wrap">
-                        <i class="<?= $r['icon'] ?>"></i>
+                    <div class="reason-card anim-zoomIn">
+                        <div class="reason-icon-wrap">
+                            <i class="<?= $r['icon'] ?>"></i>
+                        </div>
+                        <h3><?= $r['num'] ?></h3>
+                        <p><?= $r['label'] ?></p>
                     </div>
-                    <h3><?= $r['num'] ?></h3>
-                    <p><?= $r['label'] ?></p>
-                </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -214,10 +226,14 @@ include 'includes/header.php';
 </section>
 
 <script>
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.anim-fadeInUp,.anim-zoomIn').forEach(el => observer.observe(el));
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('in-view');
+        });
+    }, {
+        threshold: 0.1
+    });
+    document.querySelectorAll('.anim-fadeInUp,.anim-zoomIn').forEach(el => observer.observe(el));
 </script>
 
 <?php include 'includes/footer.php'; ?>

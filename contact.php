@@ -107,7 +107,7 @@ include 'includes/header.php';
                     <p class="form-subtitle">Fill out the form below and our team will respond within 24 hours.</p>
 
                     <?php if ($success): ?>
-                    <div style="background:#dcfce7;border:1px solid #bbf7d0;border-radius:var(--radius-sm);padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;gap:12px;">
+                    <div class="contact-alert success" style="background:#dcfce7;border:1px solid #bbf7d0;border-radius:var(--radius-sm);padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;gap:12px;">
                         <i class="fas fa-check-circle" style="color:#15803d;font-size:1.2rem;"></i>
                         <div>
                             <strong style="color:#15803d;">Message Sent Successfully!</strong><br>
@@ -117,7 +117,7 @@ include 'includes/header.php';
                     <?php endif; ?>
 
                     <?php if ($error): ?>
-                    <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:var(--radius-sm);padding:16px 20px;margin-bottom:24px;">
+                    <div class="contact-alert error" style="background:#fef2f2;border:1px solid #fecaca;border-radius:var(--radius-sm);padding:16px 20px;margin-bottom:24px;">
                         <i class="fas fa-exclamation-circle" style="color:#dc2626;"></i>
                         <strong style="color:#dc2626;"> <?= htmlspecialchars($error) ?></strong>
                     </div>

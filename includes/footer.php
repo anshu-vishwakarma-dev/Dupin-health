@@ -5,7 +5,7 @@
 <footer class="main-footer">
     <!-- Footer Top Waves -->
     <div class="footer-wave">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80"><path fill="#0a1628" fill-opacity="1" d="M0,40L48,36.7C96,33,192,27,288,30C384,33,480,47,576,50C672,53,768,47,864,43.3C960,40,1056,40,1152,38.3C1248,37,1344,33,1392,31.7L1440,30L1440,80L1392,80C1344,80,1248,80,1152,80C1056,80,960,80,864,80C768,80,672,80,576,80C480,80,384,80,288,80C192,80,96,80,48,80L0,80Z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80"><path fill="currentColor" class="wave-path" fill-opacity="1" d="M0,40L48,36.7C96,33,192,27,288,30C384,33,480,47,576,50C672,53,768,47,864,43.3C960,40,1056,40,1152,38.3C1248,37,1344,33,1392,31.7L1440,30L1440,80L1392,80C1344,80,1248,80,1152,80C1056,80,960,80,864,80C768,80,672,80,576,80C480,80,384,80,288,80C192,80,96,80,48,80L0,80Z"></path></svg>
     </div>
 
     <div class="footer-content">
@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <button onclick="toggleChat()" style="background:none; border:none; color:#fff; cursor:pointer;"><i class="fas fa-times"></i></button>
         </div>
         <div class="chatbot-body">
-            <div class="chat-sender-label" style="color: #000;">Dupin AI</div>
+            <div class="chat-sender-label">Dupin AI</div>
             <div class="chat-message bot">
                 Hello! Welcome to Dupin Healthcare. I am your virtual assistant.
             </div>
