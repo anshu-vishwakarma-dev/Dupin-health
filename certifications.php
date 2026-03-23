@@ -1,15 +1,15 @@
 <?php
+require_once 'includes/db.php';
 require_once 'includes/seo-functions.php';
 
-// --- CONFIGURATION: PUT YOUR CERTIFICATE FILE LINKS HERE ---
-// 1. Apni Certificate image ya PDF ko is folder mein copy karein: images/certificates/
-// 2. Us file ka naam niche diye gaye array mein likhein.
 $cert_files = [
-    'GMP'    => 'images/certificates/gmp.png', // Example: 'images/certificates/gmp-file.jpg'
-    'GLP'    => 'images/certificates/GLP.jpeg', // Example: 'images/certificates/glp-file.pdf'
+    'GMP'    => 'images/certificates/gmp.png',
+    'GLP'    => 'images/certificates/GLP.jpeg',
     'HACCP'  => 'images/certificates/HACCP.jpg',
     'WHO'    => 'images/certificates/WHO.jpg',
 ];
+$qa_statement = get_setting('qa_statement', 'At Dupin Healthcare Private Limited, we believe that quality is not just a requirement but a responsibility.');
+$cert_intro = get_setting('cert_intro', 'At DUPIN HEALTHCARE PRIVATE LIMITED, quality and safety are at the core of everything we do.');
 
 // Breadcrumb Schema
 $site_url = get_site_url();
@@ -45,7 +45,7 @@ include 'includes/header.php';
                 <div class="divider"></div>
             </div>
             <div class="cert-intro-text">
-                <p>At <strong>DUPIN HEALTHCARE PRIVATE LIMITED</strong>, quality and safety are at the core of everything we do. Our manufacturing processes follow strict pharmaceutical standards and are supported by recognized certifications to ensure that every product meets national and international quality benchmarks.</p>
+                <p><?php echo $cert_intro; ?></p>
             </div>
         </div>
 
@@ -141,6 +141,37 @@ include 'includes/header.php';
             </div>
         </div>
 
+        <!-- 3️⃣ Dynamic Certificates from Admin -->
+        <div style="margin:80px 0;">
+            <div class="section-header anim-fadeInUp">
+                <span class="section-badge">Gallery</span>
+                <h2 class="section-title">Our <span>Certificates</span></h2>
+                <div class="divider"></div>
+            </div>
+            <div class="cert-grid stagger-children" style="margin-top:20px;">
+                <?php
+                if ($conn) {
+                    $res = mysqli_query($conn, "SELECT * FROM certifications ORDER BY id DESC");
+                    if (mysqli_num_rows($res) > 0) {
+                        while ($row = mysqli_fetch_assoc($res)) { ?>
+                            <div class="cert-badge-card anim-zoomIn" style="text-align:center;">
+                                <div class="cert-img-wrap" style="height: 200px; overflow: hidden; margin-bottom: 15px; border-radius: 10px; border: 1px solid var(--border);">
+                                    <img src="admin/uploads/<?php echo $row['image']; ?>" alt="<?php echo $row['title']; ?>" style="width: 100%; height: 100%; object-fit: contain; padding: 10px;">
+                                </div>
+                                <h4 style="font-size: 1rem; color: var(--text-dark); margin-bottom: 10px;"><?php echo $row['title']; ?></h4>
+                                <a href="admin/uploads/<?php echo $row['image']; ?>" target="_blank" class="view-cert-btn" style="padding: 6px 15px; font-size: 0.8rem;">
+                                    <i class="fas fa-eye"></i> View Large
+                                </a>
+                            </div>
+                        <?php }
+                    } else {
+                        echo "<p style='grid-column: 1/-1; text-align: center; color: var(--text-light);'>No official certificates uploaded yet.</p>";
+                    }
+                }
+                ?>
+            </div>
+        </div>
+
         <!-- 3️⃣ Quality Commitment Statement -->
         <div class="quality-assurance-box anim-fadeInUp">
             <div class="qa-header">
@@ -148,7 +179,7 @@ include 'includes/header.php';
                 <h3>Quality Commitment Statement</h3>
             </div>
             <div class="qa-body">
-                <p>At <strong>Dupin Healthcare Private Limited</strong>, we believe that quality is not just a requirement but a responsibility. Every stage of our manufacturing process—from raw material selection to final product delivery—is monitored under strict quality assurance protocols.</p>
+                <p><?php echo $qa_statement; ?></p>
                 <div class="qa-points">
                     <div class="qa-point"><i class="fas fa-check-circle"></i> Raw Material Selection</div>
                     <div class="qa-point"><i class="fas fa-check-circle"></i> Quality Assurance</div>

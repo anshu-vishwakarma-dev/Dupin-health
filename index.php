@@ -26,11 +26,10 @@ include 'includes/header.php';
                 Caring for life, EVERYDAY
             </div>
             <h1 class="hero-title">
-                Your Trusted Excellence in <span class="highlight">Third-Party</span><br>
-                Pharma Manufacturing
+                <?php echo get_setting('hero_title', 'Your Trusted Excellence in <span class="highlight">Third-Party</span><br>Pharma Manufacturing'); ?>
             </h1>
             <p class="hero-description">
-                Dupin Healthcare Private Limited bridges the gap between pharmaceutical innovation and large-scale production, empowering brands with state-of-the-art manufacturing solutions.
+                <?php echo get_setting('hero_description', 'Dupin Healthcare Private Limited bridges the gap between pharmaceutical innovation and large-scale production, empowering brands with state-of-the-art manufacturing solutions.'); ?>
             </p>
             <div class="hero-cta">
                 <a href="products.php" class="btn btn-primary">
@@ -95,7 +94,7 @@ include 'includes/header.php';
                     <div class="divider"></div>
                 </div>
                 <p class="about-desc">
-                    At Dupin Health Care Private Limited, we specialize in Contract Manufacturing for a wide array of therapeutic segments. We operate as a seamless extension of your business, handling production complexities while you focus on marketing.
+                    <?php echo get_setting('about_company', 'At Dupin Health Care Private Limited, we specialize in Contract Manufacturing for a wide array of therapeutic segments. We operate as a seamless extension of your business, handling production complexities while you focus on marketing.'); ?>
                 </p>
                 <div class="about-features">
                     <div class="feature-item">
@@ -132,7 +131,7 @@ include 'includes/header.php';
         <div class="section-header anim-fadeInUp">
             <span class="section-badge">What We Offer</span>
             <h2 class="section-title">Our Core <span>Services</span></h2>
-            <p class="section-subtitle">Comprehensive pharmaceutical solutions designed to meet the diverse needs of healthcare providers and patients.</p>
+            <p class="section-subtitle"><?php echo get_setting('services_text', 'Comprehensive pharmaceutical solutions designed to meet the diverse needs of healthcare providers and patients.'); ?></p>
             <div class="divider"></div>
         </div>
         <div class="services-grid stagger-children">
@@ -160,78 +159,89 @@ include 'includes/header.php';
 <!-- ===== PRODUCTS PREVIEW ===== -->
 <section class="products-preview">
     <div class="container">
+        <style>
+            .products-grid.single-product-layout {
+                grid-template-columns: 1fr;
+                max-width: 900px;
+                margin: 0 auto;
+            }
+            .products-grid.single-product-layout .product-card {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 30px;
+                padding: 40px;
+                min-height: auto;
+            }
+            .products-grid.single-product-layout .product-card-img {
+                width: 40%;
+                height: 300px;
+                margin-bottom: 0;
+            }
+            .products-grid.single-product-layout .product-card-body {
+                width: 60%;
+                text-align: left;
+                padding: 0;
+            }
+            .products-grid.single-product-layout .product-card-body h3 {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+            .products-grid.single-product-layout .product-card-body p {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+            @media (max-width: 768px) {
+                .products-grid.single-product-layout .product-card {
+                    flex-direction: column;
+                    padding: 20px;
+                }
+                .products-grid.single-product-layout .product-card-img,
+                .products-grid.single-product-layout .product-card-body {
+                    width: 100%;
+                }
+                .products-grid.single-product-layout .product-card-img {
+                    height: 250px;
+                }
+            }
+        </style>
         <div class="section-header anim-fadeInUp">
             <span class="section-badge">Our Portfolio</span>
             <h2 class="section-title">Featured <span>Products</span></h2>
             <p class="section-subtitle">Explore our wide range of innovative pharmaceutical products across major therapeutic areas.</p>
             <div class="divider"></div>
         </div>
-        <div class="products-grid stagger-children">
+        <?php
+        $prod_res = db_query("SELECT p.*, c.name as cat_name FROM products p JOIN categories c ON p.category_id = c.id ORDER BY p.id DESC LIMIT 4");
+        $prod_count = db_num_rows($prod_res);
+        $grid_class = ($prod_count === 1) ? 'products-grid stagger-children single-product-layout' : 'products-grid stagger-children';
+        ?>
+        <div class="<?php echo $grid_class; ?>">
             <?php
-            $products = [
-                [
-        'id' => 'duplicit-d3',
-        'icon' => 'fas fa-pills',
-        'image' => 'https://source.unsplash.com/400x300/?vitamin,supplement,tablet&sig=101',
-        'category' => 'tablets',
-        'name' => 'DUPICIT D3',
-        'composition' => 'Cholecalciferol 60,000 IU',
-        'usage' => 'Vitamin D deficiency, Bone health',
-        'packaging' => '1x4 Tablets',
-        'form' => 'Tablet',
-        'stage' => 'Established',
-        'approval' => 'WHO-GMP',
-        'desc' => 'High-potency Vitamin D3 supplement for maintaining strong bones and supporting immune function.'
-    ],
-    [
-        'id' => 'biladup-m',
-        'icon' => 'fas fa-tablets',
-        'image' => 'https://source.unsplash.com/400x300/?allergy,medicine,pharmacy&sig=102',
-        'category' => 'tablets',
-        'name' => 'BILADUP M',
-        'composition' => 'Bilastine 20mg + Montelukast 10mg',
-        'usage' => 'Allergic rhinitis, Asthma',
-        'packaging' => '10x10 Tablets',
-        'approval' => 'WHO-GMP',
-        'desc' => 'Effective combination for managing seasonal allergies and exercise-induced asthma.'
-    ],
-    [
-        'id' => 'dupinac-sp',
-        'icon' => 'fas fa-pills',
-        'image' => 'https://source.unsplash.com/400x300/?painkiller,inflammation,pills&sig=103',
-        'category' => 'tablets',
-        'name' => 'DUPINAC SP',
-        'composition' => 'Aceclofenac 100mg + Paracetamol 325mg + Serratiopeptidase 15mg',
-        'usage' => 'Pain & Inflammation relief',
-        'packaging' => '10x10 Tablets',
-        'approval' => 'WHO-GMP',
-        'desc' => 'Triple-action formula for rapid relief from post-operative pain and inflammatory conditions.'
-    ],
-    [
-        'id' => 'defocure-6',
-        'icon' => 'fas fa-pills',
-        'image' => 'https://source.unsplash.com/400x300/?steroid,immune,medication&sig=104',
-        'category' => 'tablets',
-        'name' => 'DEFOCURE 6',
-        'composition' => 'Deflazacort 6mg',
-        'usage' => 'Anti-inflammatory, Immunosuppressant',
-        'packaging' => '10x10 Tablets',
-        'approval' => 'WHO-GMP',
-        'desc' => 'Glucocorticoid used to treat various inflammatory and autoimmune diseases.'
-    ]
-            ];
-            foreach ($products as $p): ?>
+            if($prod_count > 0):
+                while ($p = db_fetch_assoc($prod_res)): 
+            ?>
             <div class="product-card anim-zoomIn">
                 <div class="product-card-img">
-                    <img src="<?= $p['image'] ?>" alt="<?= $p['name'] ?>" loading="lazy" onerror="this.src='images/cat-tablets.png'">
-                    <span class="product-tag"><?= $p['category'] ?></span>
+                    <img src="admin/uploads/products/<?= !empty($p['image']) ? $p['image'] : 'default.png' ?>" alt="<?= $p['name'] ?>" loading="lazy" onerror="this.src='images/cat-tablets.png'">
+                    <span class="product-tag"><?= $p['cat_name'] ?></span>
                 </div>
                 <div class="product-card-body">
                     <h3><?= $p['name'] ?></h3>
-                    <p><?= $p['desc'] ?></p>
+                    <p><?= substr(strip_tags($p['description']), 0, 100) ?>...</p>
+                    <?php if($prod_count === 1): ?>
+                        <div style="margin-top: 20px;">
+                            <a href="product-details.php?id=<?= $p['id'] ?>" class="btn btn-primary">View Full Details</a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
-            <?php endforeach; ?>
+            <?php 
+                endwhile; 
+            else:
+                echo "<p style='text-align:center;width:100%;'>No featured products found.</p>";
+            endif;
+            ?>
         </div>
         <div style="text-align:center;margin-top:44px;">
             <a href="products.php" class="btn btn-outline">View All Products <i class="fas fa-arrow-right"></i></a>
@@ -277,25 +287,21 @@ include 'includes/header.php';
         </div>
         <div class="testimonials-grid stagger-children">
             <?php
-            $testimonials = [
-                ['text'=>'As a PCD partner in North India, Dupin Healthcare has provided exceptional support and high-quality formulations. Their ethics and timely delivery have helped me grow my franchise tremendously.', 'name'=>'Mr. Vikram Singh', 'role'=>'PCD Franchise Partner, Punjab', 'init'=>'VS', 'stars'=>5],
-                ['text'=>'We chose Dupin Healthcare for third-party manufacturing of our syrup range. The quality standards and WHO-GMP compliance in their Lucknow unit are truly impressive. Highly recommended for contract services.', 'name'=>'Mr. Suresh Khanna', 'role'=>'MD, HealthCare Solutions', 'init'=>'SK', 'stars'=>5],
-                ['text'=>'Being based in Lucknow, I have personally seen Dupin Healthcare\'s commitment to excellence. Their tablets and capsules are highly efficacious and have become a brand of trust for us.', 'name'=>'Dr. Rajesh Gupta', 'role'=>'Senior Physician, Lucknow', 'init'=>'RG', 'stars'=>5],
-            ];
-            foreach ($testimonials as $t): ?>
+            $t_res = db_query("SELECT * FROM testimonials ORDER BY id DESC");
+            while ($t = db_fetch_assoc($t_res)): ?>
             <div class="testimonial-card anim-fadeInUp">
                 <div class="quote-icon">&ldquo;</div>
                 <div class="stars"><?= str_repeat('★', $t['stars']) ?></div>
-                <p class="testimonial-text"><?= $t['text'] ?></p>
+                <p class="testimonial-text"><?= $t['content'] ?></p>
                 <div class="testimonial-author">
-                    <div class="author-avatar"><?= $t['init'] ?></div>
+                    <div class="author-avatar"><?= $t['initials'] ?></div>
                     <div class="author-info">
                         <div class="name"><?= $t['name'] ?></div>
                         <div class="role"><?= $t['role'] ?></div>
                     </div>
                 </div>
             </div>
-            <?php endforeach; ?>
+            <?php endwhile; ?>
         </div>
     </div>
 </section>

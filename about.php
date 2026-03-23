@@ -45,12 +45,9 @@ include 'includes/header.php';
                     <h2 class="section-title">Building a Healthier <span>World</span></h2>
                     <div class="divider" style="margin:16px 0 0 0;"></div>
                 </div>
-                <p style="color:var(--text-body);line-height:1.8;margin-bottom:16px;">
-                    Incorporated in late 2024, Dupin Health Care Private Limited was born with a vision to revolutionize the third-party pharma manufacturing landscape. Based in Lucknow, Uttar Pradesh, we bridge the gap between pharmaceutical innovation and large-scale production.
-                </p>
-                <p style="color:var(--text-body);line-height:1.8;margin-bottom:24px;">
-                    As a premier Third-Party Manufacturing partner, we empower pharmaceutical brands across India by providing state-of-the-art manufacturing solutions. Our core expertise lies in Contract Manufacturing for a wide array of therapeutic segments, ensuring high-quality medicine reaches the market efficiently and affordably.
-                </p>
+                <div style="color:var(--text-body);line-height:1.8;margin-bottom:24px;">
+                    <?php echo nl2br(get_setting('about_company', 'Incorporated in late 2024, Dupin Health Care Private Limited was born with a vision to revolutionize the third-party pharma manufacturing landscape. Based in Lucknow, Uttar Pradesh, we bridge the gap between pharmaceutical innovation and large-scale production.')); ?>
+                </div>
                 <div class="about-features">
                     <div class="feature-item">
                         <i class="fas fa-industry"></i>
@@ -89,17 +86,14 @@ include 'includes/header.php';
             <div class="mv-card mission anim-fadeInLeft">
                 <i class="fas fa-bullseye"></i>
                 <h3>Our Mission</h3>
-                <ul style="list-style:none;padding:0;">
-                    <li><i class="fas fa-check" style="color:var(--primary);margin-right:8px;"></i> <strong>Quality First:</strong> Manufacturing products that exceed international standards.</li>
-                    <li><i class="fas fa-check" style="color:var(--primary);margin-right:8px;"></i> <strong>Partnership:</strong> Providing seamless, cost-effective, and scalable solutions.</li>
-                    <li><i class="fas fa-check" style="color:var(--primary);margin-right:8px;"></i> <strong>Innovation:</strong> Continuously upgrading technology for advanced formulations.</li>
-                    <li><i class="fas fa-check" style="color:var(--primary);margin-right:8px;"></i> <strong>Integrity:</strong> Maintaining transparency and ethical business practices.</li>
-                </ul>
+                <div style="color:var(--text-body);line-height:1.6;">
+                    <?php echo nl2br(get_setting('mission', 'Manufacturing products that exceed international standards and providing seamless, cost-effective, and scalable solutions.')); ?>
+                </div>
             </div>
             <div class="mv-card vision anim-fadeInRight">
                 <i class="fas fa-eye"></i>
                 <h3>Our Vision</h3>
-                <p>To be recognized as a global leader in pharmaceutical contract manufacturing, driven by innovation, integrity, and excellence. We aspire to build a world where high-quality healthcare is accessible to every individual.</p>
+                <p><?php echo get_setting('vision', 'To be recognized as a global leader in pharmaceutical contract manufacturing, driven by innovation, integrity, and excellence.'); ?></p>
             </div>
         </div>
 
@@ -178,28 +172,29 @@ include 'includes/header.php';
             </div>
             <div class="team-grid stagger-children">
                 <?php
-                $team = [
-                    ['name' => 'AISHWARYA SINGH TOMAR', 'role' => 'Director', 'desc' => 'Driving the vision and strategic growth of Dupin Healthcare.', 'init' => 'AS'],
-                    ['name' => 'PUNEET SINGH', 'role' => 'Director', 'desc' => 'Ensuring operational excellence and manufacturing quality.', 'init' => 'PS'],
-                    ['name' => 'NEELAM SINGH', 'role' => 'Director', 'desc' => 'Focusing on business integrity and partnership management.', 'init' => 'NS'],
-                ];
-                foreach ($team as $m): ?>
+                $team_res = db_query("SELECT * FROM team ORDER BY display_order ASC, id ASC");
+                while ($m = db_fetch_assoc($team_res)): 
+                    $init = "";
+                    foreach(explode(' ', $m['name']) as $word) { $init .= substr($word, 0, 1); }
+                ?>
                     <div class="team-card anim-zoomIn">
                         <div class="team-photo">
                             <i class="fas fa-user-tie"></i>
                             <div class="team-photo-overlay">
-                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                                <?php if($m['linkedin_url']): ?>
+                                    <a href="<?= $m['linkedin_url'] ?>" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <?php endif; ?>
+                                <a href="contact.php" aria-label="Email"><i class="fas fa-envelope"></i></a>
                             </div>
                         </div>
                         <div class="team-info">
-                            <div class="author-avatar" style="margin:0 auto 10px;"><?= $m['init'] ?></div>
+                            <div class="author-avatar" style="margin:0 auto 10px;"><?= substr($init, 0, 2) ?></div>
                             <h4><?= $m['name'] ?></h4>
                             <div class="role"><?= $m['role'] ?></div>
-                            <p><?= $m['desc'] ?></p>
+                            <p><?= $m['description'] ?></p>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                <?php endwhile; ?>
             </div>
         </div>
 

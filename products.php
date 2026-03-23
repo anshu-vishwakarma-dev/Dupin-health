@@ -10,12 +10,30 @@ $breadcrumb_items = [
 // --- Pagination & Filtering Logic ---
 include 'includes/product-db.php';
 
+// Fetch valid filters from categories table
+$cat_query = "SELECT name FROM categories";
+$cat_result = db_query($cat_query);
+$valid_filters = ['all'];
+$filter_labels = ['all' => 'All Products'];
+
+if ($cat_result) {
+    while ($cat_row = mysqli_fetch_assoc($cat_result)) {
+        $cat_slug = strtolower($cat_row['name']);
+        $valid_filters[] = $cat_slug;
+        $filter_labels[$cat_slug] = $cat_row['name'];
+    }
+}
+// Add 'others' if not exists
+if (!in_array('others', $valid_filters)) {
+    $valid_filters[] = 'others';
+    $filter_labels['others'] = 'Others';
+}
+
 $current_filter = isset($_GET['filter']) ? $_GET['filter'] : 'all';
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 if ($page < 1) $page = 1;
 $items_per_page = 6; // 2 rows × 3 columns
 
-$valid_filters = ['all', 'tablets', 'capsules', 'syrups', 'softgels', 'others'];
 if (!in_array($current_filter, $valid_filters)) $current_filter = 'all';
 
 // Filter products
@@ -58,14 +76,6 @@ include 'includes/header.php';
         <!-- Filter Buttons (links for server-side) -->
         <div class="products-filter anim-fadeInUp">
             <?php
-            $filter_labels = [
-                'all'      => 'All Products',
-                'tablets'  => 'Tablets',
-                'capsules' => 'Capsules',
-                'syrups'   => 'Syrups/Liquids',
-                'softgels' => 'Softgels',
-                'others'   => 'Others',
-            ];
             foreach ($filter_labels as $key => $label): ?>
                 <a href="products.php?filter=<?= $key ?>&page=1"
                    class="filter-btn <?= $current_filter === $key ? 'active' : '' ?>">

@@ -1,4 +1,5 @@
 <?php
+require_once 'includes/db.php';
 require_once 'includes/seo-functions.php';
 // Breadcrumb Schema
 $site_url = get_site_url();
@@ -21,10 +22,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Please fill in all required fields.';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = 'Please enter a valid email address.';
+    } elseif (!isset($_POST['csrf_token']) || !verify_csrf_token($_POST['csrf_token'])) {
+        $error = 'CSRF token validation failed. Please try again.';
     } else {
-        // In production: use mail() or SMTP library
-        // mail('info@pharmacore.com', "Enquiry: $subject", "Name: $name\nEmail: $email\nPhone: $phone\n\n$message");
-        $success = true;
+        // Save to Database
+        $name_db = db_escape($name);
+        $email_db = db_escape($email);
+        $phone_db = db_escape($phone);
+        $subject_db = db_escape($subject);
+        $message_db = db_escape($message);
+        
+        $sql = "INSERT INTO enquiries (name, email, phone, subject, message) 
+                VALUES ('$name_db', '$email_db', '$phone_db', '$subject_db', '$message_db')";
+        
+        if(db_query($sql)) {
+            $success = true;
+        } else {
+            $error = "Error: Could not save your enquiry. Please try again later.";
+        }
     }
 }
 
@@ -62,14 +77,14 @@ include 'includes/header.php';
                         <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div>
                             <h4>Registered Office</h4>
-                            <p>VC 59 vastum city new gudaura sec o kanpur road<br>Lucknow, Uttar Pradesh – 226012</p>
+                            <p><?php echo get_setting('address', 'VC 59 vastum city new gudaura sec o kanpur road Lucknow 226012'); ?></p>
                         </div>
                     </div>
                     <div class="contact-info-block">
                         <div class="ci-icon"><i class="fas fa-phone-alt"></i></div>
                         <div>
                             <h4>Phone</h4>
-                            <p>18008895167 (Toll Free)<br>9648133333 (Direct)</p>
+                            <p><?php echo get_setting('phone', '18008895167'); ?></p>
                         </div>
                         <!-- 9277083830 -->
                     </div>
@@ -77,14 +92,14 @@ include 'includes/header.php';
                         <div class="ci-icon"><i class="fas fa-envelope"></i></div>
                         <div>
                             <h4>Email</h4>
-                            <p>dupinhealthcarepvtltd@gmail.com</p>
+                            <p><?php echo get_setting('email', 'dupinhealthcarepvtltd@gmail.com'); ?></p>
                         </div>
                     </div>
                     <div class="contact-info-block">
                         <div class="ci-icon"><i class="fas fa-clock"></i></div>
                         <div>
                             <h4>Working Hours</h4>
-                            <p>Monday – Friday: 9:00 AM – 6:00 PM IST<br>Saturday: 9:00 AM – 1:00 PM IST</p>
+                            <p><?php echo get_setting('working_hours', 'Monday – Friday: 9:00 AM – 6:00 PM IST'); ?></p>
                         </div>
                     </div>
                 </div>
@@ -124,6 +139,7 @@ include 'includes/header.php';
                     <?php endif; ?>
 
                     <form method="POST" action="contact.php" id="contactForm">
+                        <?php csrf_field(); ?>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">Full Name <span style="color:var(--danger);">*</span></label>

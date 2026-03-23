@@ -27,50 +27,31 @@ include 'includes/header.php';
         <div class="section-header anim-fadeInUp">
             <span class="section-badge">What We Offer</span>
             <h2 class="section-title">Trusted <span>Pharmaceutical Services</span></h2>
-            <p class="section-subtitle">At Dupin Health Care Private Limited, we specialize in high-quality third-party pharmaceutical manufacturing and PCD Pharma Franchise services across India.</p>
+            <p class="section-subtitle">
+                <?php echo get_setting('services_text', 'At Dupin Health Care Private Limited, we specialize in high-quality third-party pharmaceutical manufacturing and PCD Pharma Franchise services across India.'); ?>
+            </p>
             <div class="divider"></div>
         </div>
 
         <div class="services-features stagger-children">
             <?php
-            $services = [
-                [
-                    'icon' => 'fas fa-industry',
-                    'title' => 'Third-Party Manufacturing',
-                    'desc' => 'We are a premier provider of Third-Party contract services, offering state-of-the-art manufacturing solutions for various therapeutic segments.',
-                    'items' => ['Solid Dosage Forms (Tablets/Capsules)', 'Liquid & Semi-Solid Formulations', 'WHO-GMP Compliant Production', 'Scalable & Cost-Effective Solutions', 'Technology Transfer Support']
-                ],
-                [
-                    'icon' => 'fas fa-handshake',
-                    'title' => 'PCD Pharma Franchise',
-                    'desc' => 'Dupin Healthcare provides exclusive PCD Pharma Franchise opportunities, empowering partners to represent our quality brand in their local districts.',
-                    'items' => ['Exclusive Monopoly Rights', 'High-Quality Product Range', 'Marketing & Promotional Support', 'Timely Delivery & Logistics', 'Transparent Business Practices']
-                ],
-                [
-                    'icon' => 'fas fa-truck-medical',
-                    'title' => 'Multi-Tier Distribution',
-                    'desc' => 'Our robust, technology-driven distribution network ensures that medicines reach patients reliably across Pan-India geographies.',
-                    'items' => ['C&F JS pharmaceutical Lucknow', 'Super Stockists for Specific Zones', 'PCD Franchise Partners', 'Retail & Hospital Supply Chain', 'Seamless Supply Management']
-                ],
-                [
-                    'icon' => 'fas fa-shield-halved',
-                    'title' => 'Quality Compliance',
-                    'desc' => 'We maintain the highest standards of safety and efficacy, ensuring all our products meet international regulatory benchmarks.',
-                    'items' => ['WHO-GMP Certified Manufacturing', 'ISO-GLP Quality Benchmarks', 'HACCP Awarded Standards', 'Stringent Quality Control Lab', 'Continuous Process Monitoring']
-                ],
-            ];
-            foreach ($services as $s): ?>
+            $s_res = db_query("SELECT * FROM services ORDER BY display_order ASC, id ASC");
+            while ($s = db_fetch_assoc($s_res)): 
+                $items = !empty($s['items']) ? explode(',', $s['items']) : [];
+            ?>
                 <div class="sf-card anim-fadeInUp">
                     <div class="sf-icon"><i class="<?= $s['icon'] ?>"></i></div>
                     <h3><?= $s['title'] ?></h3>
-                    <p><?= $s['desc'] ?></p>
+                    <p><?= $s['description'] ?></p>
+                    <?php if(!empty($items)): ?>
                     <ul class="sf-list">
-                        <?php foreach ($s['items'] as $item): ?>
-                            <li><i class="fas fa-check-circle"></i> <?= $item ?></li>
+                        <?php foreach ($items as $item): ?>
+                            <li><i class="fas fa-check-circle"></i> <?= trim($item) ?></li>
                         <?php endforeach; ?>
                     </ul>
+                    <?php endif; ?>
                 </div>
-            <?php endforeach; ?>
+            <?php endwhile; ?>
         </div>
 
         <!-- Distribution Network Details -->

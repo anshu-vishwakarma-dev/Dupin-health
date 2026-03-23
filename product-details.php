@@ -1,26 +1,36 @@
 <?php
 require_once 'includes/seo-functions.php';
-include 'includes/product-db.php';
+include 'includes/db.php';
+
 // Get product ID from URL
-$product_id = isset($_GET['id']) ? trim($_GET['id']) : '';
+$product_id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
 $product = null;
 
-// Find the product in the database
-// 1. Try matching by string ID
-foreach ($products as $p) {
-    if ($p['id'] === $product_id) {
-        $product = $p;
-        break;
-    }
-}
-// echo "<pre>";
-// print_r($product);
-
-// 2. Try matching by numeric index (1-based fallback for "id 1", "id 2", etc.)
-if (!$product && is_numeric($product_id)) {
-    $index = (int)$product_id - 1;
-    if (isset($products[$index])) {
-        $product = $products[$index];
+if (!empty($product_id)) {
+    // Fetch product with category name
+    $query = "SELECT p.*, c.name as category_name 
+              FROM products p 
+              LEFT JOIN categories c ON p.category_id = c.id 
+              WHERE p.id = '$product_id' OR p.name = '$product_id' 
+              LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $product = [
+            'id' => $row['id'],
+            'icon' => $row['icon'] ?: 'fas fa-pills',
+            'image' => !empty($row['image']) ? 'admin/uploads/' . $row['image'] : '',
+            'category' => strtolower($row['category_name'] ?: 'others'),
+            'name' => $row['name'],
+            'composition' => $row['composition'],
+            'usage' => $row['usage_info'],
+            'packaging' => $row['packaging'],
+            'form' => $row['form'],
+            'stage' => $row['stage'],
+            'approval' => $row['approval'],
+            'desc' => $row['description']
+        ];
     }
 }
 

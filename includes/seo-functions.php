@@ -1,4 +1,5 @@
 <?php
+require_once 'includes/db.php';
 /**
  * SEO Helper Functions for DUPIN HEALTHCARE
  */
@@ -13,9 +14,9 @@ function get_site_url() {
 
 function get_seo_metadata($page_id, $custom_data = []) {
     $defaults = [
-        'title' => 'DUPIN HEALTHCARE PRIVATE LIMITED | Excellence in Pharma Manufacturing',
-        'description' => 'DUPIN HEALTHCARE - Your Trusted Excellence in Third-Party Pharma Manufacturing. Bridging the gap between innovation and production.',
-        'keywords' => 'pharma manufacturing, third-party manufacturing, PCD pharma franchise, pharmaceutical products, Baddi Himachal Pradesh, DUPIN HEALTHCARE',
+        'title' => get_setting('meta_title', 'DUPIN HEALTHCARE PRIVATE LIMITED | Excellence in Pharma Manufacturing'),
+        'description' => get_setting('meta_description', 'DUPIN HEALTHCARE - Your Trusted Excellence in Third-Party Pharma Manufacturing. Bridging the gap between innovation and production.'),
+        'keywords' => get_setting('meta_keywords', 'pharma manufacturing, third-party manufacturing, PCD pharma franchise, pharmaceutical products, Baddi Himachal Pradesh, DUPIN HEALTHCARE'),
         'canonical' => (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]",
         'og-image' => 'images/og-image.png', // Default OG image
         'og_type' => 'website'

@@ -1,4 +1,5 @@
 <?php
+require_once 'includes/db.php';
 // Get current page for active nav highlighting
 $current_page = basename($_SERVER['PHP_SELF']);
 
@@ -129,13 +130,13 @@ $canonical_url = $seo['canonical'];
 <div class="top-bar">
     <div class="container">
         <div class="top-bar-left">
-            <span><i class="fas fa-phone-alt"></i> <a href="tel:18008895167">18008895167</a>, <a href="tel:9648133333">9648133333</a></span>
-            <span><i class="fas fa-envelope"></i> <a href="mailto:dupinhealthcarepvtltd@gmail.com">dupinhealthcarepvtltd@gmail.com</a></span>
+            <span><i class="fas fa-phone-alt"></i> <a href="tel:<?php echo get_setting('phone', '18008895167'); ?>"><?php echo get_setting('phone', '18008895167'); ?></a></span>
+            <span><i class="fas fa-envelope"></i> <a href="mailto:<?php echo get_setting('email', 'dupinhealthcarepvtltd@gmail.com'); ?>"><?php echo get_setting('email', 'dupinhealthcarepvtltd@gmail.com'); ?></a></span>
         </div>
         <div class="top-bar-right">
-            <a href="https://www.facebook.com/share/16suEJ2j5g/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/officialdupin" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/dupin-pharmaceutical-company-b375ba3b5" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="<?php echo get_setting('facebook_url', '#'); ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="<?php echo get_setting('instagram_url', '#'); ?>" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="<?php echo get_setting('linkedin_url', '#'); ?>" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         </div>
     </div>
 </div>

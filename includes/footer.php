@@ -1,4 +1,5 @@
 <?php
+require_once 'includes/db.php';
 // Footer - included on every page
 ?>
 
@@ -19,9 +20,9 @@
                     </div>
                     <p><strong>Caring for life, EVERYDAY.</strong> Your trusted excellence in Third-Party Pharma Manufacturing, providing high-quality medicine efficiently and affordably.</p>
                     <div class="footer-socials">
-                        <a href="https://www.facebook.com/share/16suEJ2j5g/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/officialdupin" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/in/dupin-pharmaceutical-company-b375ba3b5" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="<?php echo get_setting('facebook_url', '#'); ?>" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="<?php echo get_setting('instagram_url', '#'); ?>" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="<?php echo get_setting('linkedin_url', '#'); ?>" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
 
@@ -58,15 +59,15 @@
                     <ul class="contact-list">
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>VC 59 vastum city new gudaura sec o kanpur road Lucknow 226012</span>
+                            <span><?php echo get_setting('address', 'VC 59 vastum city new gudaura sec o kanpur road Lucknow 226012'); ?></span>
                         </li>
                         <li>
                             <i class="fas fa-phone-alt"></i>
-                            <a href="tel:18008895167">18008895167</a>,<a href="tel:9648133333">9648133333</a>
+                            <a href="tel:<?php echo get_setting('phone', '18008895167'); ?>"><?php echo get_setting('phone', '18008895167'); ?></a>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <a href="mailto:dupinhealthcarepvtltd@gmail.com">dupinhealthcarepvtltd@gmail.com</a>
+                            <a href="mailto:<?php echo get_setting('email', 'dupinhealthcarepvtltd@gmail.com'); ?>"><?php echo get_setting('email', 'dupinhealthcarepvtltd@gmail.com'); ?></a>
                         </li>
                         <li>
                             <i class="fas fa-clock"></i>
