@@ -88,6 +88,27 @@ if (!function_exists('db_escape')) {
 }
 
 /**
+ * Sanitize input data to prevent SQL Injection and XSS
+ */
+if (!function_exists('sanitize')) {
+    function sanitize($data) {
+        global $conn;
+        if (is_array($data)) {
+            foreach ($data as $key => $value) {
+                $data[$key] = sanitize($value);
+            }
+        } else {
+            if ($data === null) return null;
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+            $data = mysqli_real_escape_string($conn, $data);
+        }
+        return $data;
+    }
+}
+
+/**
  * Get count of rows in a table
  */
 if (!function_exists('getCount')) {

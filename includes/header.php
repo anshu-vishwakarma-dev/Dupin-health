@@ -91,7 +91,13 @@ $canonical_url = $seo['canonical'];
             <div class="capsule-part top"></div>
             <div class="capsule-part bottom"></div>
         </div>
-        <div class="loader-text">DUPIN <span>HEALTHCARE</span></div>
+        <?php 
+            $c_name = get_setting('company_name', 'DUPIN HEALTHCARE');
+            $words = explode(' ', $c_name, 2);
+            $first_word = $words[0] ?? '';
+            $rest = $words[1] ?? '';
+        ?>
+        <div class="loader-text"><?php echo $first_word; ?> <?php if($rest): ?><span><?php echo $rest; ?></span><?php endif; ?></div>
         <div class="loader-bar">
             <div class="loader-progress"></div>
         </div>
@@ -108,13 +114,13 @@ $canonical_url = $seo['canonical'];
     </div>
     <div class="ticker-track">
         <div class="ticker-content" id="tickerContent">
-            <span>🏆 DUPIN HEALTHCARE - Incorporated late 2024 with a vision to revolutionize third-party pharma manufacturing</span>
+            <span>🏆 <?php echo get_setting('company_name', 'DUPIN HEALTHCARE'); ?> - Incorporated late 2024 with a vision to revolutionize third-party pharma manufacturing</span>
             <span>🔬 State-of-the-art facility in Baddi, Himachal Pradesh now operational</span>
             <span>🌍 Robust Pan-India distribution network ensuring seamless supply chain</span>
             <span>💊 Committed to WHO-GMP and ISO-GLP international safety benchmarks</span>
             <span>📅 Premier provider of third-party contract services and PCD Pharma Franchise</span>
             <!-- duplicate for seamless loop -->
-            <span>🏆 DUPIN HEALTHCARE - Incorporated late 2024</span>
+            <span>🏆 <?php echo get_setting('company_name', 'DUPIN HEALTHCARE'); ?> - Incorporated late 2024</span>
             <span>🔬 State-of-the-art facility in Baddi, Himachal Pradesh</span>
             <span>🌍 Robust Pan-India distribution network</span>
             <span>💊 WHO-GMP and ISO-GLP compliant</span>
@@ -151,7 +157,7 @@ $canonical_url = $seo['canonical'];
                     <i class="fas fa-capsules"></i>
                 </div>
                 <div class="logo-text">
-                    <span class="logo-name">DUPIN HEALTHCARE</span>
+                    <span class="logo-name"><?php echo get_setting('company_name', 'DUPIN HEALTHCARE'); ?></span>
                     <span class="logo-tagline">Caring for life, EVERYDAY</span>
                 </div>
             </a>

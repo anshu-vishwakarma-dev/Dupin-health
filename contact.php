@@ -12,11 +12,14 @@ $breadcrumb_items = [
 $success = false;
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name    = trim($_POST['name'] ?? '');
-    $email   = trim($_POST['email'] ?? '');
-    $phone   = trim($_POST['phone'] ?? '');
-    $subject = trim($_POST['subject'] ?? '');
-    $message = trim($_POST['message'] ?? '');
+    // Sanitize all POST data at once
+    $post_data = sanitize($_POST);
+
+    $name         = $post_data['name'] ?? '';
+    $email        = $post_data['email'] ?? '';
+    $phone        = $post_data['phone'] ?? '';
+    $subject      = $post_data['subject'] ?? '';
+    $message      = $post_data['message'] ?? '';
 
     if (empty($name) || empty($email) || empty($message)) {
         $error = 'Please fill in all required fields.';
@@ -25,17 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (!isset($_POST['csrf_token']) || !verify_csrf_token($_POST['csrf_token'])) {
         $error = 'CSRF token validation failed. Please try again.';
     } else {
-        // Save to Database
-        $name_db = db_escape($name);
-        $email_db = db_escape($email);
-        $phone_db = db_escape($phone);
-        $subject_db = db_escape($subject);
-        $message_db = db_escape($message);
-        
         $sql = "INSERT INTO enquiries (name, email, phone, subject, message) 
-                VALUES ('$name_db', '$email_db', '$phone_db', '$subject_db', '$message_db')";
-        
-        if(db_query($sql)) {
+                VALUES ('$name', '$email', '$phone', '$subject', '$message')";
+
+        if (db_query($sql)) {
             $success = true;
         } else {
             $error = "Error: Could not save your enquiry. Please try again later.";
@@ -122,20 +118,20 @@ include 'includes/header.php';
                     <p class="form-subtitle">Fill out the form below and our team will respond within 24 hours.</p>
 
                     <?php if ($success): ?>
-                    <div class="contact-alert success" style="background:#dcfce7;border:1px solid #bbf7d0;border-radius:var(--radius-sm);padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;gap:12px;">
-                        <i class="fas fa-check-circle" style="color:#15803d;font-size:1.2rem;"></i>
-                        <div>
-                            <strong style="color:#15803d;">Message Sent Successfully!</strong><br>
-                            <span style="font-size:0.85rem;color:#166534;">Thank you, <?= htmlspecialchars($name) ?>. We'll get back to you within 24 hours.</span>
+                        <div class="contact-alert success" style="background:#dcfce7;border:1px solid #bbf7d0;border-radius:var(--radius-sm);padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;gap:12px;">
+                            <i class="fas fa-check-circle" style="color:#15803d;font-size:1.2rem;"></i>
+                            <div>
+                                <strong style="color:#15803d;">Message Sent Successfully!</strong><br>
+                                <span style="font-size:0.85rem;color:#166534;">Thank you, <?= htmlspecialchars($name) ?>. We'll get back to you within 24 hours.</span>
+                            </div>
                         </div>
-                    </div>
                     <?php endif; ?>
 
                     <?php if ($error): ?>
-                    <div class="contact-alert error" style="background:#fef2f2;border:1px solid #fecaca;border-radius:var(--radius-sm);padding:16px 20px;margin-bottom:24px;">
-                        <i class="fas fa-exclamation-circle" style="color:#dc2626;"></i>
-                        <strong style="color:#dc2626;"> <?= htmlspecialchars($error) ?></strong>
-                    </div>
+                        <div class="contact-alert error" style="background:#fef2f2;border:1px solid #fecaca;border-radius:var(--radius-sm);padding:16px 20px;margin-bottom:24px;">
+                            <i class="fas fa-exclamation-circle" style="color:#dc2626;"></i>
+                            <strong style="color:#dc2626;"> <?= htmlspecialchars($error) ?></strong>
+                        </div>
                     <?php endif; ?>
 
                     <form method="POST" action="contact.php" id="contactForm">
@@ -162,21 +158,16 @@ include 'includes/header.php';
                                 <label for="subject">Subject</label>
                                 <select id="subject" name="subject">
                                     <option value="">Select Subject</option>
-                                    <option value="product-enquiry" <?= ($_POST['subject'] ?? '')==='product-enquiry'?'selected':'' ?>>Product Enquiry</option>
-                                    <option value="partnership"     <?= ($_POST['subject'] ?? '')==='partnership'?'selected':'' ?>>Partnership / Licensing</option>
-                                    <option value="careers"         <?= ($_POST['subject'] ?? '')==='careers'?'selected':'' ?>>Career Opportunities</option>
-                                    <option value="medical-affairs" <?= ($_POST['subject'] ?? '')==='medical-affairs'?'selected':'' ?>>Medical Affairs</option>
-                                    <option value="other"           <?= ($_POST['subject'] ?? '')==='other'?'selected':'' ?>>Other</option>
+                                    <option value="product-enquiry" <?= ($_POST['subject'] ?? '') === 'product-enquiry' ? 'selected' : '' ?>>Product Enquiry</option>
+                                    <option value="partnership" <?= ($_POST['subject'] ?? '') === 'partnership' ? 'selected' : '' ?>>Partnership / Licensing</option>
+                                    <option value="careers" <?= ($_POST['subject'] ?? '') === 'careers' ? 'selected' : '' ?>>Career Opportunities</option>
+                                    <option value="medical-affairs" <?= ($_POST['subject'] ?? '') === 'medical-affairs' ? 'selected' : '' ?>>Medical Affairs</option>
+                                    <option value="other" <?= ($_POST['subject'] ?? '') === 'other' ? 'selected' : '' ?>>Other</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="organisation">Organisation / Hospital</label>
-                            <input type="text" id="organisation" name="organisation" placeholder="Enter your organisation name"
-                                value="<?= htmlspecialchars($_POST['organisation'] ?? '') ?>">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Your Message <span style="color:var(--danger);">*</span></label>
+                            <label for="message">Message <span style="color:var(--danger);">*</span></label>
                             <textarea id="message" name="message" placeholder="Please describe your enquiry in detail..." required><?= htmlspecialchars($_POST['message'] ?? '') ?></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" id="submitBtn" style="width:100%;justify-content:center;">
@@ -197,18 +188,18 @@ include 'includes/header.php';
             <div class="services-features stagger-children" style="margin-top:20px;">
                 <?php
                 $offices = [
-                    ['flag'=>'🏭','city'=>'Manufacturing Unit', 'icon'=>'fas fa-industry',   'address'=>'Plot no.70/1, Dharampur, jharmajri, Baddi, Dist - Solan, Himachal Pradesh - 173205', 'phone'=>'Available on request'],
-                    ['flag'=>'📍','city'=>'Registered Office', 'icon'=>'fas fa-building',   'address'=>'VC 59 vastum city new gudaura sec o kanpur road, Lucknow, UP - 226012',      'phone'=>'18008895167'],
+                    ['flag' => '🏭', 'city' => 'Manufacturing Unit', 'icon' => 'fas fa-industry',   'address' => 'Plot no.70/1, Dharampur, jharmajri, Baddi, Dist - Solan, Himachal Pradesh - 173205', 'phone' => 'Available on request'],
+                    ['flag' => '📍', 'city' => 'Registered Office', 'icon' => 'fas fa-building',   'address' => 'VC 59 vastum city new gudaura sec o kanpur road, Lucknow, UP - 226012',      'phone' => '18008895167'],
                 ];
                 foreach ($offices as $o): ?>
-                <div class="sf-card anim-fadeInUp" style="text-align:center;">
-                    <div style="font-size:2.5rem;margin-bottom:14px;"><?= $o['flag'] ?></div>
-                    <h3><?= $o['city'] ?></h3>
-                    <div class="sf-list" style="align-items:flex-start;text-align:left;margin-top:14px;">
-                        <li><i class="fas fa-map-marker-alt"></i> <?= $o['address'] ?></li>
-                        <li><i class="fas fa-phone-alt"></i> <?= $o['phone'] ?></li>
+                    <div class="sf-card anim-fadeInUp" style="text-align:center;">
+                        <div style="font-size:2.5rem;margin-bottom:14px;"><?= $o['flag'] ?></div>
+                        <h3><?= $o['city'] ?></h3>
+                        <div class="sf-list" style="align-items:flex-start;text-align:left;margin-top:14px;">
+                            <li><i class="fas fa-map-marker-alt"></i> <?= $o['address'] ?></li>
+                            <li><i class="fas fa-phone-alt"></i> <?= $o['phone'] ?></li>
+                        </div>
                     </div>
-                </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -216,17 +207,21 @@ include 'includes/header.php';
 </section>
 
 <script>
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.anim-fadeInUp,.anim-fadeInLeft,.anim-fadeInRight').forEach(el => observer.observe(el));
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('in-view');
+        });
+    }, {
+        threshold: 0.1
+    });
+    document.querySelectorAll('.anim-fadeInUp,.anim-fadeInLeft,.anim-fadeInRight').forEach(el => observer.observe(el));
 
-// Form submit effect
-document.getElementById('contactForm')?.addEventListener('submit', function() {
-    const btn = document.getElementById('submitBtn');
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    btn.disabled = true;
-});
+    // Form submit effect
+    document.getElementById('contactForm')?.addEventListener('submit', function() {
+        const btn = document.getElementById('submitBtn');
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        btn.disabled = true;
+    });
 </script>
 
 <?php include 'includes/footer.php'; ?>

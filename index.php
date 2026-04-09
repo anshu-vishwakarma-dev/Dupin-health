@@ -29,7 +29,7 @@ include 'includes/header.php';
                 <?php echo get_setting('hero_title', 'Your Trusted Excellence in <span class="highlight">Third-Party</span><br>Pharma Manufacturing'); ?>
             </h1>
             <p class="hero-description">
-                <?php echo get_setting('hero_description', 'Dupin Healthcare Private Limited bridges the gap between pharmaceutical innovation and large-scale production, empowering brands with state-of-the-art manufacturing solutions.'); ?>
+                <?php echo get_setting('hero_description', get_setting('company_name', 'Dupin Healthcare') . ' Private Limited bridges the gap between pharmaceutical innovation and large-scale production, empowering brands with state-of-the-art manufacturing solutions.'); ?>
             </p>
             <div class="hero-cta">
                 <a href="products.php" class="btn btn-primary">
@@ -136,22 +136,20 @@ include 'includes/header.php';
         </div>
         <div class="services-grid stagger-children">
             <?php
-            $services = [
-                ['icon'=>'fas fa-industry',       'title'=>'Third-Party Manufacturing','desc'=>'Seamless contract manufacturing solutions for a wide array of therapeutic segments with precision and compliance.', 'link'=>'services.php'],
-                ['icon'=>'fas fa-handshake',      'title'=>'PCD Pharma Franchise',    'desc'=>'Exclusive franchise opportunities for partners to represent the Dupin brand in their local districts.',           'link'=>'services.php'],
-                ['icon'=>'fas fa-truck-medical',  'title'=>'Distribution Reach',      'desc'=>'Robust multi-tier distribution model including C&F agents, super stockists, and retail supply, supporting CFA - JS pharmaceutical Lucknow distribution.',              'link'=>'services.php'],
-                ['icon'=>'fas fa-shield-halved',  'title'=>'Quality Assurance',       'desc'=>'Ensuring every product meets international safety benchmarks like WHO-GMP and ISO-GLP.',                     'link'=>'services.php'],
-                ['icon'=>'fas fa-flask-vial',     'title'=>'Advanced Formulations',   'desc'=>'Continuously upgrading technology and processes to deliver advanced therapeutic formulations.',              'link'=>'services.php'],
-                ['icon'=>'fas fa-briefcase',      'title'=>'Business Partnership',    'desc'=>'Operating as a seamless extension of your own business to help you focus on marketing and distribution.',     'link'=>'services.php'],
-            ];
-            foreach ($services as $s): ?>
-            <div class="service-card anim-fadeInUp">
-                <div class="service-icon"><i class="<?= $s['icon'] ?>"></i></div>
-                <h3><?= $s['title'] ?></h3>
-                <p><?= $s['desc'] ?></p>
-                <a href="<?= $s['link'] ?>" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <?php endforeach; ?>
+            $res = db_query("SELECT * FROM services ORDER BY display_order ASC, id ASC LIMIT 6");
+            if (db_num_rows($res) > 0):
+                while ($s = db_fetch_assoc($res)): ?>
+                    <div class="service-card anim-fadeInUp">
+                        <div class="service-icon"><i class="<?= $s['icon'] ?>"></i></div>
+                        <h3><?= $s['title'] ?></h3>
+                        <p><?= substr(strip_tags($s['description']), 0, 120) ?>...</p>
+                        <a href="services.php" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+            <?php endwhile;
+            else:
+                echo "<p style='text-align:center;width:100%;'>No services found.</p>";
+            endif;
+            ?>
         </div>
     </div>
 </section>
@@ -165,6 +163,7 @@ include 'includes/header.php';
                 max-width: 900px;
                 margin: 0 auto;
             }
+
             .products-grid.single-product-layout .product-card {
                 display: flex;
                 flex-direction: row;
@@ -173,33 +172,40 @@ include 'includes/header.php';
                 padding: 40px;
                 min-height: auto;
             }
+
             .products-grid.single-product-layout .product-card-img {
                 width: 40%;
                 height: 300px;
                 margin-bottom: 0;
             }
+
             .products-grid.single-product-layout .product-card-body {
                 width: 60%;
                 text-align: left;
                 padding: 0;
             }
+
             .products-grid.single-product-layout .product-card-body h3 {
                 font-size: 1.8rem;
                 margin-bottom: 15px;
             }
+
             .products-grid.single-product-layout .product-card-body p {
                 font-size: 1rem;
                 line-height: 1.8;
             }
+
             @media (max-width: 768px) {
                 .products-grid.single-product-layout .product-card {
                     flex-direction: column;
                     padding: 20px;
                 }
+
                 .products-grid.single-product-layout .product-card-img,
                 .products-grid.single-product-layout .product-card-body {
                     width: 100%;
                 }
+
                 .products-grid.single-product-layout .product-card-img {
                     height: 250px;
                 }
@@ -218,26 +224,26 @@ include 'includes/header.php';
         ?>
         <div class="<?php echo $grid_class; ?>">
             <?php
-            if($prod_count > 0):
-                while ($p = db_fetch_assoc($prod_res)): 
+            if ($prod_count > 0):
+                while ($p = db_fetch_assoc($prod_res)):
             ?>
-            <div class="product-card anim-zoomIn">
-                <div class="product-card-img">
-                    <img src="admin/uploads/products/<?= !empty($p['image']) ? $p['image'] : 'default.png' ?>" alt="<?= $p['name'] ?>" loading="lazy" onerror="this.src='images/cat-tablets.png'">
-                    <span class="product-tag"><?= $p['cat_name'] ?></span>
-                </div>
-                <div class="product-card-body">
-                    <h3><?= $p['name'] ?></h3>
-                    <p><?= substr(strip_tags($p['description']), 0, 100) ?>...</p>
-                    <?php if($prod_count === 1): ?>
-                        <div style="margin-top: 20px;">
-                            <a href="product-details.php?id=<?= $p['id'] ?>" class="btn btn-primary">View Full Details</a>
+                    <div class="product-card anim-zoomIn">
+                        <div class="product-card-img">
+                            <img src="admin/uploads/products/<?= !empty($p['image']) ? $p['image'] : 'default.png' ?>" alt="<?= $p['name'] ?>" loading="lazy" onerror="this.src='images/cat-tablets.png'">
+                            <span class="product-tag"><?= $p['cat_name'] ?></span>
                         </div>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <?php 
-                endwhile; 
+                        <div class="product-card-body">
+                            <h3><?= $p['name'] ?></h3>
+                            <p><?= substr(strip_tags($p['description']), 0, 100) ?>...</p>
+                            <?php if ($prod_count === 1): ?>
+                                <div style="margin-top: 20px;">
+                                    <a href="product-details.php?id=<?= $p['id'] ?>" class="btn btn-primary">View Full Details</a>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+            <?php
+                endwhile;
             else:
                 echo "<p style='text-align:center;width:100%;'>No featured products found.</p>";
             endif;
@@ -253,24 +259,35 @@ include 'includes/header.php';
 <section class="stats-section">
     <div class="container">
         <div class="stats-grid stagger-children" style="color: #fff;">
+            <?php
+            // Fetch dynamic counts
+            $product_count_res = db_query("SELECT COUNT(*) as count FROM products");
+            $product_count = db_fetch_assoc($product_count_res)['count'];
+
+            $team_count_res = db_query("SELECT COUNT(*) as count FROM team");
+            $team_count = db_fetch_assoc($team_count_res)['count'];
+
+            $countries = get_setting('countries_served', '15');
+            $rd_projects = get_setting('rd_projects', '20');
+            ?>
             <div class="stat-card anim-zoomIn">
                 <div class="stat-card-icon" style="color: #fff;"><i class="fas fa-capsules"></i></div>
-                <div class="stat-number"><span class="counter" data-target="100">0</span><sup>+</sup></div>
+                <div class="stat-number"><span class="counter" data-target="<?= $product_count ?>">0</span><sup>+</sup></div>
                 <div class="stat-label" style="color: #0d3480;">Products in Portfolio</div>
             </div>
             <div class="stat-card anim-zoomIn">
                 <div class="stat-card-icon" style="color: #fff;"><i class="fas fa-flask"></i></div>
-                <div class="stat-number"><span class="counter" data-target="20">0</span></div>
+                <div class="stat-number"><span class="counter" data-target="<?= $rd_projects ?>">0</span></div>
                 <div class="stat-label" style="color: #0d3480;">Active R&D Projects</div>
             </div>
             <div class="stat-card anim-zoomIn">
                 <div class="stat-card-icon" style="color: #fff;"><i class="fas fa-globe"></i></div>
-                <div class="stat-number"><span class="counter" data-target="15">0</span><sup>+</sup></div>
+                <div class="stat-number"><span class="counter" data-target="<?= $countries ?>">0</span><sup>+</sup></div>
                 <div class="stat-label" style="color: #0d3480;">Countries Served</div>
             </div>
             <div class="stat-card anim-zoomIn">
                 <div class="stat-card-icon" style="color: #fff;"><i class="fas fa-users"></i></div>
-                <div class="stat-number"><span class="counter" data-target="300">0</span><sup>+</sup></div>
+                <div class="stat-number"><span class="counter" data-target="<?= $team_count ?>">0</span><sup>+</sup></div>
                 <div class="stat-label" style="color: #0d3480;">Team Members</div>
             </div>
         </div>
@@ -289,18 +306,18 @@ include 'includes/header.php';
             <?php
             $t_res = db_query("SELECT * FROM testimonials ORDER BY id DESC");
             while ($t = db_fetch_assoc($t_res)): ?>
-            <div class="testimonial-card anim-fadeInUp">
-                <div class="quote-icon">&ldquo;</div>
-                <div class="stars"><?= str_repeat('★', $t['stars']) ?></div>
-                <p class="testimonial-text"><?= $t['content'] ?></p>
-                <div class="testimonial-author">
-                    <div class="author-avatar"><?= $t['initials'] ?></div>
-                    <div class="author-info">
-                        <div class="name"><?= $t['name'] ?></div>
-                        <div class="role"><?= $t['role'] ?></div>
+                <div class="testimonial-card anim-fadeInUp">
+                    <div class="quote-icon">&ldquo;</div>
+                    <div class="stars"><?= str_repeat('★', $t['stars']) ?></div>
+                    <p class="testimonial-text"><?= $t['content'] ?></p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"><?= $t['initials'] ?></div>
+                        <div class="author-info">
+                            <div class="name"><?= $t['name'] ?></div>
+                            <div class="role"><?= $t['role'] ?></div>
+                        </div>
                     </div>
                 </div>
-            </div>
             <?php endwhile; ?>
         </div>
     </div>
@@ -326,43 +343,47 @@ include 'includes/header.php';
 
 <!-- Scroll Animation + Counter Script -->
 <script>
-// Intersection Observer for scroll animations
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-        }
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, {
+        threshold: 0.12
     });
-}, { threshold: 0.12 });
 
-document.querySelectorAll('.anim-fadeInUp, .anim-fadeInLeft, .anim-fadeInRight, .anim-zoomIn').forEach(el => {
-    observer.observe(el);
-});
-
-// Counter Animation
-const counters = document.querySelectorAll('.counter');
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const el = entry.target;
-            const target = parseInt(el.dataset.target);
-            const duration = 2000;
-            const step = target / (duration / 16);
-            let current = 0;
-            const timer = setInterval(() => {
-                current += step;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                el.textContent = Math.floor(current).toLocaleString();
-            }, 16);
-            counterObserver.unobserve(el);
-        }
+    document.querySelectorAll('.anim-fadeInUp, .anim-fadeInLeft, .anim-fadeInRight, .anim-zoomIn').forEach(el => {
+        observer.observe(el);
     });
-}, { threshold: 0.5 });
 
-counters.forEach(c => counterObserver.observe(c));
+    // Counter Animation
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.dataset.target);
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    el.textContent = Math.floor(current).toLocaleString();
+                }, 16);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    counters.forEach(c => counterObserver.observe(c));
 </script>
 
 <?php include 'includes/footer.php'; ?>

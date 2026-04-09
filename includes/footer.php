@@ -16,7 +16,7 @@ require_once 'includes/db.php';
                 <div class="footer-col footer-brand">
                     <div class="footer-logo">
                         <i class="fas fa-capsules"></i>
-                        <span>DUPIN HEALTHCARE</span>
+                        <span><?php echo get_setting('company_name', 'DUPIN HEALTHCARE'); ?></span>
                     </div>
                     <p><strong>Caring for life, EVERYDAY.</strong> Your trusted excellence in Third-Party Pharma Manufacturing, providing high-quality medicine efficiently and affordably.</p>
                     <div class="footer-socials">
@@ -71,7 +71,7 @@ require_once 'includes/db.php';
                         </li>
                         <li>
                             <i class="fas fa-clock"></i>
-                            <span>Mon – Fri: 9:00 AM – 6:00 PM</span>
+                            <span><?php echo get_setting('working_hours', 'Mon – Fri: 9:00 AM – 6:00 PM'); ?></span>
                         </li>
                     </ul>
                 </div>
@@ -91,7 +91,7 @@ require_once 'includes/db.php';
 
             <!-- Footer Bottom -->
             <div class="footer-bottom">
-                <p>&copy; <?php echo date('Y'); ?> DUPIN HEALTHCARE PRIVATE LIMITED. All Rights Reserved.</p>
+                <p>&copy; <?php echo date('Y'); ?> <?php echo strtoupper(get_setting('company_name', 'DUPIN HEALTHCARE')); ?> PRIVATE LIMITED. All Rights Reserved.</p>
                 <div class="footer-bottom-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Use</a>
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isBot) {
             const label = document.createElement('div');
             label.className = 'chat-sender-label';
-            label.textContent = 'Dupin AI';
+            label.textContent = '<?php echo get_setting('company_name', 'Dupin'); ?> AI';
             chatBody.appendChild(label);
         }
         const msgDiv = document.createElement('div');
@@ -167,10 +167,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const msg = input.toLowerCase();
         
         if (msg.includes('hi') || msg.includes('hello') || msg.includes('hey')) {
-            return "Hello! I am Dupin AI. How can I assist you with our pharmaceutical services today?";
+            return "Hello! I am <?php echo get_setting('company_name', 'Dupin'); ?> AI. How can I assist you with our pharmaceutical services today?";
         }
         if (msg.includes('pcd') || msg.includes('franchise') || msg.includes('distributor')) {
-            return "Yes! Dupin Healthcare provides PCD Pharma Franchise opportunities across India. We offer monopoly rights and high-quality marketing support. You can call us at 1800-889-5167 for details.";
+            return "Yes! <?php echo get_setting('company_name', 'Dupin'); ?> Healthcare provides PCD Pharma Franchise opportunities across India. We offer monopoly rights and high-quality marketing support. You can call us at 1800-889-5167 for details.";
         }
         if (msg.includes('third party') || msg.includes('manufacturing') || msg.includes('contract')) {
             return "We are a premier provider of Third-Party/Contract Manufacturing services. We specialize in Tablets, Capsules, Softgels, and Syrups with WHO-GMP standards.";
@@ -247,16 +247,16 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="chatbot-window" id="chatbotWindow">
         <div class="chatbot-header">
             <div>
-                <i class="fas fa-robot"></i> <strong>Dupin AI</strong>
+                <i class="fas fa-robot"></i> <strong><?php echo get_setting('company_name', 'Dupin'); ?> AI</strong>
             </div>
             <button onclick="toggleChat()" style="background:none; border:none; color:#fff; cursor:pointer;"><i class="fas fa-times"></i></button>
         </div>
         <div class="chatbot-body">
-            <div class="chat-sender-label">Dupin AI</div>
+            <div class="chat-sender-label"><?php echo get_setting('company_name', 'Dupin'); ?> AI</div>
             <div class="chat-message bot">
-                Hello! Welcome to Dupin Healthcare. I am your virtual assistant.
+                Hello! Welcome to <?php echo get_setting('company_name', 'Dupin Healthcare'); ?>. I am your virtual assistant.
             </div>
-            <div class="chat-sender-label">Dupin AI</div>
+            <div class="chat-sender-label"><?php echo get_setting('company_name', 'Dupin'); ?> AI</div>
             <div class="chat-message bot">
                 How can I assist you with <strong>PCD Franchise</strong>, <strong>Manufacturing</strong>, or <strong>Products</strong> today?
             </div>

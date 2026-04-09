@@ -36,19 +36,19 @@ include 'includes/header.php';
         <div class="services-features stagger-children">
             <?php
             $s_res = db_query("SELECT * FROM services ORDER BY display_order ASC, id ASC");
-            while ($s = db_fetch_assoc($s_res)): 
+            while ($s = db_fetch_assoc($s_res)):
                 $items = !empty($s['items']) ? explode(',', $s['items']) : [];
             ?>
                 <div class="sf-card anim-fadeInUp">
                     <div class="sf-icon"><i class="<?= $s['icon'] ?>"></i></div>
                     <h3><?= $s['title'] ?></h3>
                     <p><?= $s['description'] ?></p>
-                    <?php if(!empty($items)): ?>
-                    <ul class="sf-list">
-                        <?php foreach ($items as $item): ?>
-                            <li><i class="fas fa-check-circle"></i> <?= trim($item) ?></li>
-                        <?php endforeach; ?>
-                    </ul>
+                    <?php if (!empty($items)): ?>
+                        <ul class="sf-list">
+                            <?php foreach ($items as $item): ?>
+                                <li><i class="fas fa-check-circle"></i> <?= trim($item) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
                     <?php endif; ?>
                 </div>
             <?php endwhile; ?>
@@ -64,26 +64,16 @@ include 'includes/header.php';
             </div>
 
             <div class="dist-model-grid stagger-children">
-                <div class="dist-card anim-fadeInUp">
-                    <div class="dist-card-icon"><i class="fas fa-warehouse"></i></div>
-                    <h4>C&F Agents (Carrying & Forwarding)</h4>
-                    <p>Strategically located regional hubs that manage large-scale inventory and state-wise distribution.</p>
-                </div>
-                <div class="dist-card anim-fadeInUp">
-                    <div class="dist-card-icon"><i class="fas fa-boxes-stacked"></i></div>
-                    <h4>Super Stockists</h4>
-                    <p>Our primary partners for specific zones, ensuring that even remote areas have access to our formulations.</p>
-                </div>
-                <div class="dist-card anim-fadeInUp">
-                    <div class="dist-card-icon"><i class="fas fa-handshake-angle"></i></div>
-                    <h4>PCD Franchise Partners</h4>
-                    <p>A growing network of exclusive distributors who represent the Dupin brand in their local districts.</p>
-                </div>
-                <div class="dist-card anim-fadeInUp">
-                    <div class="dist-card-icon"><i class="fas fa-hospital-user"></i></div>
-                    <h4>Retail & Hospital Supply</h4>
-                    <p>Direct-to-institution supply chains for hospitals, clinics, and government healthcare departments.</p>
-                </div>
+                <?php
+                $dist_res = db_query("SELECT * FROM site_features WHERE type='distribution' ORDER BY display_order ASC, id ASC");
+                while ($d = db_fetch_assoc($dist_res)):
+                ?>
+                    <div class="dist-card anim-fadeInUp">
+                        <div class="dist-card-icon"><i class="<?= $d['icon'] ?>"></i></div>
+                        <h4><?= $d['title'] ?></h4>
+                        <p><?= $d['description'] ?></p>
+                    </div>
+                <?php endwhile; ?>
             </div>
         </div>
 
@@ -100,29 +90,35 @@ include 'includes/header.php';
                 <div class="presence-col">
                     <h4><i class="fas fa-map-location-dot"></i> Domestic Presence (Pan-India)</h4>
                     <ul class="presence-list">
-                        <li><i class="fas fa-circle-check"></i>
-                            <div><strong>North India:</strong> Uttar Pradesh (Base), Delhi NCR, Haryana, Punjab, and Uttarakhand.</div>
-                        </li>
-                        <li><i class="fas fa-circle-check"></i>
-                            <div><strong>Central India:</strong> Madhya Pradesh and Chhattisgarh.</div>
-                        </li>
-                        <li><i class="fas fa-circle-check"></i>
-                            <div><strong>East & West India:</strong> Expanding networks in Bihar, Rajasthan, and Gujarat.</div>
-                        </li>
+                        <?php
+                        $domestic = get_setting('presence_domestic');
+                        $domestic_items = !empty($domestic) ? explode('|', $domestic) : [];
+                        foreach ($domestic_items as $item):
+                            $parts = explode(':', $item, 2);
+                            $title = $parts[0] ?? '';
+                            $desc = $parts[1] ?? '';
+                        ?>
+                            <li><i class="fas fa-circle-check"></i>
+                                <div><strong><?= trim($title) ?>:</strong> <?= trim($desc) ?></div>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
                 <div class="presence-col">
                     <h4><i class="fas fa-route"></i> Strategic Locations</h4>
                     <ul class="presence-list">
-                        <li><i class="fas fa-location-crosshairs"></i>
-                            <div><strong>Regional Hubs:</strong> Fast-track delivery to major metropolitan cities.</div>
-                        </li>
-                        <li><i class="fas fa-city"></i>
-                            <div><strong>Tier 2 & 3 Cities:</strong> Ensuring availability in smaller towns and rural centers.</div>
-                        </li>
-                        <li><i class="fas fa-hospital-user"></i>
-                            <div><strong>Institutional Supply:</strong> Supplying directly to leading hospitals and government departments.</div>
-                        </li>
+                        <?php
+                        $strategic = get_setting('presence_strategic');
+                        $strategic_items = !empty($strategic) ? explode('|', $strategic) : [];
+                        foreach ($strategic_items as $item):
+                            $parts = explode(':', $item, 2);
+                            $title = $parts[0] ?? '';
+                            $desc = $parts[1] ?? '';
+                        ?>
+                            <li><i class="fas fa-location-crosshairs"></i>
+                                <div><strong><?= trim($title) ?>:</strong> <?= trim($desc) ?></div>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
@@ -130,7 +126,7 @@ include 'includes/header.php';
             <!-- Global Aspirations -->
             <div class="aspiration-box anim-zoomIn" style="margin-top: 60px;">
                 <span class="tag">Global Aspirations</span>
-                <p>"While we are currently focused on strengthening the Indian healthcare landscape, Dupin Health Care is actively working towards meeting international regulatory standards (such as WHO-GMP) to take our 'Made in India' quality to the global market."</p>
+                <p>"<?= get_setting('global_aspirations', 'While we are currently focused on strengthening the Indian healthcare landscape, Dupin Health Care is actively working towards meeting international regulatory standards to take our quality global.') ?>"</p>
             </div>
         </div>
 
@@ -142,14 +138,16 @@ include 'includes/header.php';
                 <div class="divider" style="margin:16px 0 0 0;"></div>
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px;" class="stagger-children">
-                <div class="anim-fadeInUp" style="background:var(--bg-white); padding:30px; border-radius:var(--radius-lg); border-left: 5px solid var(--primary);">
-                    <h4 style="color:var(--primary); margin-bottom:12px; font-weight:800;">Do you provide PCD pharma franchise?</h4>
-                    <p style="font-weight:600; color:var(--text-dark);">Yes, DUPIN HEALTHCARE provides exclusive PCD Pharma Franchise opportunities across India with monopoly rights.</p>
-                </div>
-                <div class="anim-fadeInUp" style="background:var(--bg-white); padding:30px; border-radius:var(--radius-lg); border-left: 5px solid var(--secondary);">
-                    <h4 style="color:var(--secondary); margin-bottom:12px; font-weight:800;">Do you offer Third-Party Manufacturing?</h4>
-                    <p style="font-weight:600; color:var(--text-dark);">Yes, DUPIN HEALTHCARE is a premier provider of Third-Party contract manufacturing services with state-of-the-art facilities.</p>
-                </div>
+                <?php
+                $faq_res = db_query("SELECT * FROM faqs ORDER BY display_order ASC, id ASC");
+                while ($fq = db_fetch_assoc($faq_res)):
+                    $border_color = ($fq['color_type'] == 'secondary') ? 'var(--secondary)' : 'var(--primary)';
+                ?>
+                    <div class="anim-fadeInUp" style="background:var(--bg-white); padding:30px; border-radius:var(--radius-lg); border-left: 5px solid <?= $border_color ?>;">
+                        <h4 style="color:<?= $border_color ?>; margin-bottom:12px; font-weight:800;"><?= $fq['question'] ?></h4>
+                        <p style="font-weight:600; color:var(--text-dark);"><?= $fq['answer'] ?></p>
+                    </div>
+                <?php endwhile; ?>
             </div>
         </div>
 
@@ -161,21 +159,16 @@ include 'includes/header.php';
             </div>
             <div class="stats-grid stagger-children" style="margin-top:50px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
                 <?php
-                $reasons = [
-                    ['icon' => 'fas fa-award',        'num' => 'WHO-GMP', 'label' => 'Quality Certified & WHO-GMP Compliant'],
-                    ['icon' => 'fas fa-truck-fast',   'num' => 'Pan-India', 'label' => 'Robust Supply Network Across India'],
-                    ['icon' => 'fas fa-clock',         'num' => 'ESTD 2024',   'label' => 'Modern Excellence Integrated Since 2024'],
-                    ['icon' => 'fas fa-industry',      'num' => 'Baddi Unit',    'label' => 'State-of-the-Art Formulation Facility'],
-                ];
-                foreach ($reasons as $r): ?>
+                $reasons_res = db_query("SELECT * FROM site_features WHERE type='why' ORDER BY display_order ASC, id ASC");
+                while ($r = db_fetch_assoc($reasons_res)): ?>
                     <div class="reason-card anim-zoomIn">
                         <div class="reason-icon-wrap">
                             <i class="<?= $r['icon'] ?>"></i>
                         </div>
-                        <h3><?= $r['num'] ?></h3>
-                        <p><?= $r['label'] ?></p>
+                        <h3><?= $r['title'] ?></h3>
+                        <p><?= $r['description'] ?></p>
                     </div>
-                <?php endforeach; ?>
+                <?php endwhile; ?>
             </div>
         </div>
 

@@ -163,7 +163,7 @@ include 'includes/header.php';
                                     <i class="fas fa-eye"></i> View Large
                                 </a>
                             </div>
-                        <?php }
+                <?php }
                     } else {
                         echo "<p style='grid-column: 1/-1; text-align: center; color: var(--text-light);'>No official certificates uploaded yet.</p>";
                     }
@@ -189,214 +189,215 @@ include 'includes/header.php';
         </div>
 
     </div>
-<!-- CTA Section -->
-<section class="cta-section">
-    <div class="container">
-        <div class="cta-content anim-fadeInUp">
-            <h2>Join the DUPIN HEALTHCARE Family</h2>
-            <p>We are always looking for dedicated partners and professionals passionate about pharmaceutical excellence. Explore opportunities with us.</p>
-            <div class="cta-btns">
-                <a href="contact.php" class="btn btn-primary"><i class="fas fa-user-plus"></i> Join Our Team</a>
-                <a href="contact.php" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.4);">
-                    <i class="fas fa-envelope"></i> Get In Touch
-                </a>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content anim-fadeInUp">
+                <h2>Join the DUPIN HEALTHCARE Family</h2>
+                <p>We are always looking for dedicated partners and professionals passionate about pharmaceutical excellence. Explore opportunities with us.</p>
+                <div class="cta-btns">
+                    <a href="contact.php" class="btn btn-primary"><i class="fas fa-user-plus"></i> Join Our Team</a>
+                    <a href="contact.php" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.4);">
+                        <i class="fas fa-envelope"></i> Get In Touch
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<style>
-    body.dark-mode .quality-assurance-box {
-        background: #1e293b !important;
-    }
-    .certifications-page {
-        padding: 80px 0;
-        background: var(--bg-light);
-    }
+    <style>
+        body.dark-mode .quality-assurance-box {
+            background: #1e293b !important;
+        }
 
-    .cert-intro {
-        max-width: 900px;
-        margin: 0 auto 60px;
-        text-align: center;
-    }
+        .certifications-page {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
 
-    .cert-logo-row {
-        display: flex;
-        justify-content: center;
-        gap: 40px;
-        flex-wrap: wrap;
-        margin-bottom: 60px;
-    }
-
-    .cert-logo-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 150px;
-    }
-
-    .cert-logo-item .logo-box {
-        width: 100px;
-        height: 100px;
-        background: var(--bg-white);
-        border: 3px solid var(--primary);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--primary);
-        margin-bottom: 10px;
-        box-shadow: var(--shadow-sm);
-    }
-
-    .cert-logo-item span {
-        font-weight: 700;
-        font-size: 0.85rem;
-        color: var(--text-dark);
-    }
-
-    .subsection-title {
-        text-align: center;
-        font-size: 1.8rem;
-        margin-bottom: 40px;
-        color: var(--text-dark);
-    }
-
-    .cert-desc-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        max-width: 1000px;
-        margin: 0 auto 60px;
-    }
-
-    .cert-desc-card {
-        background: var(--bg-white);
-        padding: 30px;
-        border-radius: 15px;
-        display: flex;
-        gap: 25px;
-        border: 1px solid var(--border);
-        transition: var(--transition);
-    }
-
-    .cert-desc-card:hover {
-        transform: translateX(10px);
-        border-color: var(--primary);
-        box-shadow: var(--shadow-md);
-    }
-
-    .card-num {
-        font-size: 2.5rem;
-        font-weight: 900;
-        color: rgba(27, 79, 168, 0.1);
-    }
-
-    .card-info h4 {
-        color: var(--primary);
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-    }
-
-    .card-info p {
-        margin-bottom: 15px;
-        font-size: 0.95rem;
-        color: var(--text-body);
-    }
-
-    .view-cert-btn {
-        background: var(--primary);
-        color: #fff;
-        padding: 10px 20px;
-        border-radius: 8px;
-        font-weight: 600;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        text-decoration: none;
-        font-size: 0.9rem;
-    }
-
-    .view-cert-btn:hover {
-        background: var(--primary-dark);
-        transform: scale(1.05);
-    }
-
-    .quality-assurance-box {
-        background: var(--border);
-        color: var(--text-dark);
-        padding: 50px;
-        border-radius: 25px;
-        border: 1px solid var(--border);
-    }
-
-    body.dark-mode .quality-assurance-box {
-        background: var(--bg-light);
-    }
-
-    .qa-header {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        margin-bottom: 20px;
-    }
-
-    .qa-header i {
-        font-size: 2rem;
-        color: var(--secondary);
-    }
-
-    .qa-header h3 {
-        font-size: 1.5rem;
-        color: var(--secondary);
-        margin: 0;
-    }
-
-    .qa-points {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 15px;
-        margin-top: 20px;
-    }
-
-    .qa-point {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 0.95rem;
-        color: var(--text-body);
-    }
-
-    .qa-point i {
-        color: var(--secondary);
-    }
-
-    @media (max-width: 768px) {
-        .cert-desc-card {
-            flex-direction: column;
+        .cert-intro {
+            max-width: 900px;
+            margin: 0 auto 60px;
             text-align: center;
-            padding: 20px;
+        }
+
+        .cert-logo-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .cert-logo-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 150px;
+        }
+
+        .cert-logo-item .logo-box {
+            width: 100px;
+            height: 100px;
+            background: var(--bg-white);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .cert-logo-item span {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+
+        .subsection-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+        }
+
+        .cert-desc-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+        }
+
+        .cert-desc-card {
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: 15px;
+            display: flex;
+            gap: 25px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .cert-desc-card:hover {
+            transform: translateX(10px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-num {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: rgba(27, 79, 168, 0.1);
+        }
+
+        .card-info h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .card-info p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: var(--text-body);
+        }
+
+        .view-cert-btn {
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .view-cert-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .quality-assurance-box {
+            background: var(--border);
+            color: var(--text-dark);
+            padding: 50px;
+            border-radius: 25px;
+            border: 1px solid var(--border);
+        }
+
+        body.dark-mode .quality-assurance-box {
+            background: var(--bg-light);
         }
 
         .qa-header {
-            flex-direction: column;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
         }
-    }
-</style>
 
-<script>
-    // Scroll animations
-    const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) e.target.classList.add('in-view');
+        .qa-header i {
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+
+        .qa-header h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin: 0;
+        }
+
+        .qa-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .qa-point {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: var(--text-body);
+        }
+
+        .qa-point i {
+            color: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            .cert-desc-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .qa-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+
+    <script>
+        // Scroll animations
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) e.target.classList.add('in-view');
+            });
+        }, {
+            threshold: 0.1
         });
-    }, {
-        threshold: 0.1
-    });
-    document.querySelectorAll('.anim-fadeInUp').forEach(el => obs.observe(el));
-</script>
+        document.querySelectorAll('.anim-fadeInUp').forEach(el => obs.observe(el));
+    </script>
 
-<?php include 'includes/footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>

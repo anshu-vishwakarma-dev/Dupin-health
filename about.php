@@ -34,7 +34,7 @@ include 'includes/header.php';
                 <div class="about-badge-float">
                     <div class="icon"><i class="fas fa-award"></i></div>
                     <div class="badge-text">
-                        <div class="num">Est. 2024</div>
+                        <div class="num">Est. <?php echo get_setting('est_year', '2024'); ?></div>
                         <div class="lbl">Trusted Excellence</div>
                     </div>
                 </div>
@@ -49,27 +49,18 @@ include 'includes/header.php';
                     <?php echo nl2br(get_setting('about_company', 'Incorporated in late 2024, Dupin Health Care Private Limited was born with a vision to revolutionize the third-party pharma manufacturing landscape. Based in Lucknow, Uttar Pradesh, we bridge the gap between pharmaceutical innovation and large-scale production.')); ?>
                 </div>
                 <div class="about-features">
-                    <div class="feature-item">
-                        <i class="fas fa-industry"></i>
-                        <div>
-                            <h5>State-of-the-Art Facility</h5>
-                            <p>Located in Baddi, Himachal Pradesh, equipped with modern machinery.</p>
+                    <?php
+                    $features_res = db_query("SELECT * FROM site_features WHERE type='about' ORDER BY display_order ASC, id ASC");
+                    while ($f = db_fetch_assoc($features_res)):
+                    ?>
+                        <div class="feature-item">
+                            <i class="<?= $f['icon'] ?>"></i>
+                            <div>
+                                <h5><?= $f['title'] ?></h5>
+                                <p><?= $f['description'] ?></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-certificate"></i>
-                        <div>
-                            <h5>High Quality Standards</h5>
-                            <p>Compliance with WHO-GMP and ISO-GLP safety benchmarks.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-truck-fast"></i>
-                        <div>
-                            <h5>Extensive Network</h5>
-                            <p>Robust Pan-India distribution reach through C&F and stockists.</p>
-                        </div>
-                    </div>
+                    <?php endwhile; ?>
                 </div>
             </div>
         </div>
@@ -106,21 +97,15 @@ include 'includes/header.php';
             </div>
             <div class="services-grid stagger-children" style="margin-top:20px;">
                 <?php
-                $values = [
-                    ['icon' => 'fas fa-heart', 'title' => 'Patient First',      'desc' => 'Every decision starts with the question: how does this benefit the patient? Patient welfare guides all our actions.'],
-                    ['icon' => 'fas fa-shield-alt', 'title' => 'Integrity',       'desc' => 'We uphold the highest ethical standards in research, manufacturing, and business conduct. No compromise.'],
-                    ['icon' => 'fas fa-lightbulb', 'title' => 'Innovation',       'desc' => 'We foster a culture where creative thinking and bold ideas thrive, continuously investing in better formulations.'],
-                    ['icon' => 'fas fa-leaf',   'title' => 'Sustainability',     'desc' => 'Committed to green chemistry, carbon-neutral manufacturing, and responsible supply chain practices.'],
-                    ['icon' => 'fas fa-users',  'title' => 'Collaboration',      'desc' => 'We believe great science happens when diverse minds work together — internally and with global partners.'],
-                    ['icon' => 'fas fa-star',   'title' => 'Excellence',         'desc' => 'From the lab to the pharmacy shelf, we pursue perfection in quality, efficacy, and safety at every step.'],
-                ];
-                foreach ($values as $v): ?>
+                $values_res = db_query("SELECT * FROM core_values ORDER BY display_order ASC, id ASC");
+                while ($v = db_fetch_assoc($values_res)):
+                ?>
                     <div class="service-card anim-fadeInUp">
                         <div class="service-icon"><i class="<?= $v['icon'] ?>"></i></div>
                         <h3><?= $v['title'] ?></h3>
-                        <p><?= $v['desc'] ?></p>
+                        <p><?= $v['description'] ?></p>
                     </div>
-                <?php endforeach; ?>
+                <?php endwhile; ?>
             </div>
         </div>
 
@@ -173,15 +158,17 @@ include 'includes/header.php';
             <div class="team-grid stagger-children">
                 <?php
                 $team_res = db_query("SELECT * FROM team ORDER BY display_order ASC, id ASC");
-                while ($m = db_fetch_assoc($team_res)): 
+                while ($m = db_fetch_assoc($team_res)):
                     $init = "";
-                    foreach(explode(' ', $m['name']) as $word) { $init .= substr($word, 0, 1); }
+                    foreach (explode(' ', $m['name']) as $word) {
+                        $init .= substr($word, 0, 1);
+                    }
                 ?>
                     <div class="team-card anim-zoomIn">
                         <div class="team-photo">
                             <i class="fas fa-user-tie"></i>
                             <div class="team-photo-overlay">
-                                <?php if($m['linkedin_url']): ?>
+                                <?php if ($m['linkedin_url']): ?>
                                     <a href="<?= $m['linkedin_url'] ?>" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                                 <?php endif; ?>
                                 <a href="contact.php" aria-label="Email"><i class="fas fa-envelope"></i></a>
